@@ -1,0 +1,749 @@
+@startuml
+
+
+title Transferring with Currency Conversion\nPayee DFSP requests conversion\nSender pays fees\nConversion passes through a reference currency
+
+actor "Upile Chisala" as A1
+participant "NBS\nBank" as D1
+participant "COMESA\nMalawi\nExchange\n(COMESA_MWK)" as FXPM
+participant "COMESA\Zambia\nExchange\(COMESA_ZMW)" as FXPZ
+participant "Switch" as S1
+participant "Zoona" as D2
+participant ALS
+autonumber
+
+A1->D1:I'd like to pay Mulenga Kapwepwe\n100 ZMW for her latest book, please
+== Discovery Phase ==
+activate D1
+D1->S1:I want to send to MSISDN 260795390415\n**GET /parties/MSISDN/260795390415**
+activate S1
+S1-->D1:202 I'll get back to you
+deactivate D1
+S1->ALS:Who owns MSISDN 260795390415?
+activate ALS
+ALS-->S1:It's Zoona
+deactivate ALS
+S1->D2:Do you own MSISDN 260795390415?
+activate D2
+D2-->S1:202 I'll get back to you
+deactivate S1
+D2->S1:Yes, it's Mulenga Kapwepwe. She can receive in ZMW\n**PUT /parties/MSISDN/260795390415**
+note over D2
+
+    PUT /parties
+
+    "party": {
+    "partyIdInfo": {
+    "partyIdType": "MSISDN",
+    "partyIdentifier": "260795390415"
+    },
+    "name": "Mulenga Kapwepwe",
+    "receiveCurrencies":[
+    "ZMW"
+    ]
+    }
+end note
+activate S1
+S1-->D2:200 Gotcha
+deactivate D2
+S1->D1:Yes, it's Mulenga Kapwepwe. She can receive in ZMW\n**PUT /parties/MSISDN/260795390415**
+activate D1
+D1-->S1:200 Gotcha
+deactivate S1
+
+== Agreement Phase ==
+
+D1->D1:I can see that currency conversion is required.\nI'm going to let the payee DFSP provide it.
+
+
+D1->S1:Please quote for a payment of 100 ZMW.\n**POST /quotes**
+note over D1
+
+    POST /quotes
+
+    {
+        "quoteId": "382987a8-75ce-4037-b500-c475e08c1727"
+        ,"transactionId": "d9ce59d4-3598-4396-8630-581bb0551451"
+        , "payee": {
+            "partyIdInfo": {
+            "partyIdType": "MSISDN"
+            , "partyIdentifier": "260795390415"
+            }
+        }
+        , "payer": {
+            "partyIdInfo": {
+                "partyIdType": "MSISDN"
+                , "partyIdentifier": "265314118010"
+                , "supportedCurrencies": ["MWK"]
+            }
+        },
+        "amountType": "RECEIVE"
+        , "amount": {
+            "currency": "ZMW"
+            , "amount": "100"
+        }
+        , "transactionType": {
+            "scenario": "TRANSFER"
+            , "initiator": "PAYER"
+            , "initiatorType": "CONSUMER"
+        }
+    }
+
+end note
+activate S1
+S1-->D1:202 I'll get back to you
+deactivate D1
+S1->D2:Please quote for a transfer which sends 100 ZMW.\n**POST /quotes**
+activate D2
+D2-->S1:202 I'll get back to you
+deactivate S1
+
+== Currency conversion ==
+
+D2->D2:Hmmm. I'll need to get some currency conversion
+
+D2->S1:What FXPs do you know about who do this conversion?\n**GET /services/FXP//ZMW**
+activate S1
+S1-->D2:202 I'll get back to you
+deactivate D2
+S1->ALS:What FXPs do you know about\nwho will convert to ZMW?
+activate ALS
+ALS-->S1:COMESA_ZMW
+deactivate ALS
+S1->D2:Here are the available FXPs:COMESA_ZMW
+note over S1
+
+    PUT /services/FXP
+
+    "fxpProviders": [
+    "COMESA_ZMW"
+    ]
+end note
+activate D2
+D2-->S1:200 Gotcha
+deactivate S1
+D2->D2:I'll ask the COMESA ZMW conversion service to perform my conversion
+
+D2->S1:Here is the initial version of the transfer.\nPlease quote me for the currency conversion.
+note over D2
+
+    **post /fxQuotes**
+
+    {
+        "quoteId": "e1cd817e-11c4-40de-ba06-d5d7e065f803"
+        , "transactionId": "ada7c86d-a2c2-4377-9179-5679435d0924"
+        , "payee": {
+            ""
+        }
+    "conversionRequestId": "828cc75f-1654-415e-8fcd-df76cc9329b9"
+    , "conversion": {
+        "conversionId": "581f68ef-b54f-416f-9161-ac34e889a84b",
+        , "counterPartyFsp": "COMESA_ZMW"
+        , "amountType": "SEND"
+        , "initiatingFsp": "Zoona"
+        , "sourceAmount": {
+            "currency": "MWK"
+        }
+        , "targetAmount": {
+            "currency": "ZMW"
+            , "amount": "100"
+        }
+        , "validity": "2021-08-25T14:17:09.663+01:00"
+    }
+    }
+
+end note
+activate S1
+S1-->D2:202 I'll get back to you
+deactivate D2
+S1->FXPZ:Here is the initial version of the transfer.\nPlease quote me for the currency conversion.\n**POST /fxQuote**
+activate FXPZ
+FXPZ-->S1:202 I'll get back to you
+deactivate S1
+FXPZ->FXPZ:OK, so I need to figure this out...
+note over FXPZ
+
+    This is an FXP which uses a reference currency.
+    So it overturns the proposed conversion from MWK to ZMW, and replaces
+    the source currency with the reference currency.
+    The exchange rate is simple, and there are no charges...
+    Now I'll set an expiry time, sign the quotation object,
+    create an ILPV4 prepare packet and return it in the intermediary object.
+
+    NOTE: the ILPV4 prepare packet contains the following items, all encoded:
+    - The amount being sent (i.e. in the source currency)
+    - An expiry time
+    - The condition
+    - The name of the FXP
+    - The content of the conversion terms
+
+    ** PUT /fxQuotes/828cc75f-1654-415e-8fcd-df76cc9329b9**
+
+    {
+        "condition": "a85c58f6532d32d7d589d630c27c5322c045bd94e630180733ceabd345bcc79b"
+        , "conversionTerms": {
+            "conversionId": "581f68ef-b54f-416f-9161-ac34e889a84b"
+            , "determiningTransferId": "d9ce59d4-3598-4396-8630-581bb0551451"
+            , "counterPartyFsp": "COMESA_ZMW"
+            , "amountType": "SEND"
+            , "initiatingFsp": "Zoona"
+            , "sourceAmount": {
+                "currency": "XUA"
+                , "amount": "4.28"
+            }
+            , "targetAmount": {
+                "currency": "ZMW"
+                , "amount": "100"
+            }
+            , "validity": "2021-08-25T14:17:09.663+01:00"
+        }
+    }
+end note
+FXPZ->S1:Here's the signed conversion object
+activate S1
+S1-->FXPZ:200 Gotcha
+deactivate FXPZ
+S1->D2:Here's the signed conversion object\n**PUT /fxQuotes/828cc75f-1654-415e-8fcd-df76cc9329b9**
+activate D2
+D2-->S1:Gotcha
+deactivate S1
+
+
+D2->D2:The exchange rate between XUA and ZMW is 4.28/100
+D2->D2:OK, so I will charge 2 ZMW for this.\nNow I sign the transaction object\nand return it to the Debtor DFSP
+D2->S1:Here's the signed quote
+note over D2
+
+    **put /quotes/382987a8-75ce-4037-b500-c475e08c1727**
+
+    {
+        "transferAmount": {
+            "currency": "XUA"
+            , "amount": "4.3656"
+        }
+        , "payeeReceiveAmount": {
+            "currency": "ZMW"
+            , "amount": "100"
+        },
+        "payeeFspFee": {
+            "currency": "XUA"
+            , "amount": "0.0856"
+        }
+        , "expiration": "2021-08-25T14:17:09.663+01:00
+        , transaction: {
+            "transactionId": "d9ce59d4-3598-4396-8630-581bb0551451"
+            "quoteId": "382987a8-75ce-4037-b500-c475e08c1727"
+            , "payee": {
+                "partyIdInfo": {
+                "partyIdType": "MSISDN"
+                , "partyIdentifier": "260795390415"
+                }
+            }
+            , "payer": {
+                "partyIdInfo": {
+                    "partyIdType": "MSISDN"
+                    , "partyIdentifier": "265314118010"
+                }
+            },
+            , "amount": {
+                "currency": "XUA"
+                , "amount": "4.3656"
+            }
+            , "payeeReceiveAmount": {
+                "currency": "ZMW"
+                , "amount": "100"
+            },
+            , "transactionType": {
+                "scenario": "TRANSFER"
+                , "initiator": "PAYER"
+                , "initiatorType": "CONSUMER"
+            }
+        }
+        , "condition": "BfNFPRgfKF8Ke9kpoNAagmcI4/Hya5o/rq9/fq97ZiA="
+    }
+
+    end note
+    activate S1
+    S1-->D2:200 Gotcha
+    deactivate D2
+    S1->D1:Here's the signed quote\n**PUT /quotes/382987a8-75ce-4037-b500-c475e08c1727**
+    activate D1
+    D1-->S1:200 Gotcha
+    deactivate S1
+    D1->D1:OK, I can see that the payee wants to be paid in XUA.\nSo I'll have to get some currency conversion\nso I can send the correct currency.
+
+    D1->S1:What FXPs do you know about?\n**GET /services/FXP/MWK/XUA**
+    activate S1
+    S1-->D1:202 I'll get back to you
+    deactivate D1
+    S1->ALS:What FXPs do you know about?
+    activate ALS
+    ALS-->S1:COMESA_MWK
+    deactivate ALS
+    S1->D1:Here are the available FXPs:COMESA_MWK
+    note over S1
+
+        PUT /services/FXP/MWK/XUA
+
+        "fxpProviders": [
+        "COMESA_MWK"
+        ]
+    end note
+    activate D1
+    D1-->S1:200 Gotcha
+    deactivate S1
+    D1->D1:I'll ask the COMESA conversion service to perform my conversion.
+    note over D1
+
+    Nothing forces the debtor DFSP to use the same FXP;
+    but it does have to use an FXP which will convert
+    into XUA.
+
+    end note
+
+    D1->S1:Here is the initial version of the transfer.\nPlease quote me for the currency conversion.
+    note over D1
+
+        **post /fxQuotes**
+
+        {
+        "conversionRequestId": "828cc75f-1654-415e-8fcd-df76cc9329b9"
+        , "conversion": {
+            "conversionId": "581f68ef-b54f-416f-9161-ac34e889a84b",
+            , "counterPartyFsp": "COMESA_XUA"
+            , "amountType": "SEND"
+            , "initiatingFsp": "NBS_Bank"
+            , "sourceAmount": {
+                "currency": "MWK"
+            }
+            , "targetAmount": {
+                "currency": "XUA"
+                , "amount": "4.3656"
+            }
+            , "validity": "2021-08-25T14:17:09.663+01:00"
+        }
+        }
+
+    end note
+    activate S1
+    S1-->D1:202 I'll get back to you
+    deactivate D1
+    S1->FXPM:Here is the initial version of the transfer.\nPlease quote me for the currency conversion.\n**POST /fxQuote**
+    activate FXPM
+    FXPM-->S1:202 I'll get back to you
+    deactivate S1
+    FXPM->FXPM:OK, so I need to figure this out...
+    note over FXPM
+
+        This is an FXP which uses a reference currency.
+        So it's happy to convert to the reference currency.
+        The exchange rate is simple, and there are no charges...
+        Now I'll set an expiry time, sign the quotation object,
+        create an ILPV4 prepare packet and return it in the intermediary object.
+
+        NOTE: the ILPV4 prepare packet contains the following items, all encoded:
+        - The amount being sent (i.e. in the source currency)
+        - An expiry time
+        - The condition
+        - The name of the FXP
+        - The content of the conversion terms
+
+        ** PUT /fxQuotes/828cc75f-1654-415e-8fcd-df76cc9329b9**
+
+        {
+            "condition": "54f860a8107b3f3002e4f6ac4e91c02e72d13109a6e9e38da2fb46a2ea44972f"
+            , "conversionTerms": [
+                {
+                    "conversionId": "581f68ef-b54f-416f-9161-ac34e889a84b"
+                    , "determiningTransferId": "d9ce59d4-3598-4396-8630-581bb0551451"
+                    , "counterPartyFsp": "COMESA_XUA"
+                    , "amountType": "SEND"
+                    , "initiatingFsp": "NBS_Bank"
+                    , "sourceAmount": {
+                        "currency": "MWK",
+                        "amount": "6134.366"
+                    }
+                    , "targetAmount": {
+                        "currency": "XUA",
+                        "amount": "4.3656"
+                    }
+                    , "validity": "2021-08-25T14:17:09.663+01:00"
+                }
+            ]
+        }
+    end note
+    FXPM->S1:Here's the signed conversion object
+    activate S1
+    S1-->FXPM:200 Gotcha
+    deactivate FXPM
+    S1->D1:Here's the signed conversion object\n**PUT /fxQuotes/828cc75f-1654-415e-8fcd-df76cc9329b9**
+    activate D1
+    D1-->S1:Gotcha
+    deactivate S1
+
+
+    D1->D1:OK, so the effective MXK/XUA exchange rate is 6134.366/4.3656\nNow I can calculate the fee in local currency
+    D1->A1:Hi, Upile: I can do the transfer.\n6134.37 MWK will be deducted from your account\nIt'll cost you 120.28 MWK in fees\nand Mulenga Kapwepwe will receive\100 ZMW.\nLet me know if you want to go ahead
+    A1-->D1:Great! Yes please, go ahead
+
+    == Transfer Phase ==
+
+    D1->D1:OK, first of all I need to get the currency that the payee DFSP wants
+    D1->S1:Please execute the conversion.
+        note over D2
+
+    **POST /fxTransfers**
+
+    {
+        "commitRequestId": "2a5a9d0d-3cf8-4a29-96d1-1248f437a684"
+        , "determiningTransferId": "d9ce59d4-3598-4396-8630-581bb0551451"
+        , "requestingFsp": "NBS_Bank"
+        , "respondingFxp": "COMESA_MWK"
+        , "sourceAmount": {
+            "currency": "MWK",
+            "amount": "6134.366"
+        }
+        , "targetAmount": {
+            "currency": "XUA",
+            "amount": "4.3656"
+        }
+        , "condition": "54f860a8107b3f3002e4f6ac4e91c02e72d13109a6e9e38da2fb46a2ea44972f"
+    }
+    end note
+    activate S1
+    S1-->D1:202 I'll get back to you
+    deactivate D1
+    S1->S1:OK, so this is an FX confirmation.
+    S1->S1: Does the sender have an account in this currency?\nYes, it does
+    S1->S1: Liquidity check and reserve on debtor account for this transfer
+    note over S1
+
+    Reservations:
+
+    NBS_Bank has a reservation of 6134.366 MWK
+
+    end note
+
+    S1->FXPM:Please confirm the currency conversion part of the transfer\n** POST /fxTransfers**
+    activate FXPM
+    FXPM-->S1:202 I'll get back to you
+    deactivate S1
+    FXPM->FXPM:Is all this OK?\nIf so, send the fulfilment back
+    FXPM->S1:Confirmed. Here's the fulfilment
+    note over FXPM
+
+    **PUT /fxTransfers/2a5a9d0d-3cf8-4a29-96d1-1248f437a684**
+
+    {
+        "fulfilment": "1486763188351580d3e25d0e777432f48e30a1c954ef59e99990df6b0f99988b"
+        , "completedTimeStamp": "2021-08-25T14:17:08.175+01:00"
+        , "conversionState": "RESERVED"
+    }
+
+    end note
+    activate S1
+    S1-->FXPM:200 Gotcha
+    deactivate FXPM
+    S1->S1:Check fulfilment matches and cancel if not.
+    alt Conversion failed
+        S1->D2:Sorry. Conversion failed
+        note over S1
+
+        **PUT /fxTransfers/2a5a9d0d-3cf8-4a29-96d1-1248f437a684/error**
+
+        {
+            "errorCode": "9999"
+            , "errorDescription": "Whatever the error was"
+        }
+        end note
+        activate D2
+        D2-->S1:200 Gotcha
+        deactivate D2
+        S1->S1:Cancel reservation for this conversion.
+        S1->D2:Sorry.  Conversion failed.
+        activate D2
+        D2-->S1:200 Gotcha
+        deactivate S1
+        D2->S1:Cancel transfer
+        note over D2
+
+        **PUT /transfers/c720ae14-fc72-4acd-9113-8b601b34ba4d/error**
+
+        {
+            "errorCode": "9999"
+            , "errorDescription": "Whatever the error was"
+        }
+        end note
+        activate S1
+        S1-->D2:200 Gotcha
+        deactivate D2
+        S1->S1:Cancel reservation for this transfer.
+        S1->D1:Sorry.  Conversion failed.
+        activate D1
+        D1-->S1:200 Gotcha
+        D1->A1:Sorry, your payment did not succeed.\nYou have not been charged for this payment.
+    else Conversion succeeded
+
+        S1->D1:Conversion succeeded subject to transfer success\n**PUT /fxTransfers/77c9d78d-c26a-4474-8b3c-99b96a814bfc**
+        activate D2
+        D1-->S1:200 Gotcha
+        deactivate S1
+
+
+        D1->S1:Please do the transfer
+        note over D1
+
+    POST /transfers
+
+    {
+        "transferId": "c720ae14-fc72-4acd-9113-8b601b34ba4d"
+        , "payeeFsp": "Zoona"
+        , "payerFsp": "NBS_Bank"
+        , "amount": {
+            "currency": "XUA"
+            , "amount": "4.3656"
+        }
+        , transaction: {
+            "transactionId": "d9ce59d4-3598-4396-8630-581bb0551451"
+            "quoteId": "382987a8-75ce-4037-b500-c475e08c1727"
+            , "payee": {
+                "partyIdInfo": {
+                "partyIdType": "MSISDN"
+                , "partyIdentifier": "260795390415"
+                }
+            }
+            , "payer": {
+                "partyIdInfo": {
+                    "partyIdType": "MSISDN"
+                    , "partyIdentifier": "265314118010"
+                }
+            },
+            , "amount": {
+                "currency": "MWK"
+                , "amount": "6134.366"
+            }
+            , "payeeReceiveAmount": {
+                "currency": "ZMW"
+                , "amount": "100"
+            }
+            , "transactionType": {
+                "scenario": "TRANSFER"
+                , "initiator": "PAYER"
+                , "initiatorType": "CONSUMER"
+            }
+        }
+    }
+
+    end note
+    activate S1
+    S1-->D1:202 I'll get back to you
+    deactivate D1
+    S1->S1:Does the debtor hold an account in XUA? No.
+    S1->S1:Is this the currency of the source amount in the dependency? No
+    S1->S1:Make the reservation against the FXP\n specified in the dependency.
+    note over S1
+
+    Reservations:
+
+    NBS_Bank has a reservation of 6134.366 MWK
+    COMESA_MWK has a reservation of 4.3656 XUA
+
+    end note
+    S1->D2:Please do the transfer\n**POST /transfers**
+    activate D2
+    D2-->S1:202 I'll get back to you
+    deactivate S1
+
+    D2->D2:Do I need to activate currency conversion?\nYes, I do
+    D2->S1:Please confirm your part of the transfer
+    note over D2
+
+    **POST /fxTransfers**
+
+    {
+        "commitRequestId": "77c9d78d-c26a-4474-8b3c-99b96a814bfc"
+        , "determiningTransferId": "d9ce59d4-3598-4396-8630-581bb0551451"
+        , "requestingFsp": "Zoona"
+        , "respondingFxp": "COMESA_ZMW"
+        , "sourceAmount": {
+            "currency": "XUA",
+            "amount": "6134.366"
+        }
+        , "targetAmount": {
+            "currency": "ZMW",
+            "amount": "102"
+        }
+        , "condition": "a85c58f6532d32d7d589d630c27c5322c045bd94e630180733ceabd345bcc79b"
+    }
+    end note
+    activate S1
+    S1-->D2:202 I'll get back to you
+    deactivate D2
+    S1->S1:OK, so this is an FX confirmation.
+    S1->S1: Does the requester have an account in this currency?\nNo, it doesn't.
+    S1->S1: Liquidity check and reserve on FXP account for this conversion
+    note over S1
+
+    Reservations:
+
+    NBS_Bank has a reservation of 5250 MWK
+    COMESA_MWK has a reservation of 4.3656 XUA
+    COMESA_ZMW has a reservation of 102 ZMW
+
+    end note
+
+    S1->FXPZ:Please confirm the currency conversion part of the transfer\n** POST /fxTransfers**
+    activate FXPZ
+    FXPZ-->S1:202 I'll get back to you
+    deactivate S1
+    FXPZ->FXPZ:Is all this OK?\nIf so, send the fulfilment back
+    FXPZ->S1:Confirmed. Here's the fulfilment
+    note over FXPZ
+
+    **PUT /fxTransfers/77c9d78d-c26a-4474-8b3c-99b96a814bfc**
+
+    {
+        "fulfilment": "6af3e2c36ae1d7adf286ea44bd2c272670b8156a35610ec8b7421a1637ee7a32"
+        , "completedTimeStamp": "2021-08-25T14:17:08.175+01:00"
+        , "conversionState": "RESERVED"
+    }
+
+    end note
+    activate S1
+    S1-->FXPZ:200 Gotcha
+    deactivate FXPZ
+    S1->S1:Check fulfilment matches and cancel if not.
+    alt Conversion failed
+        S1->D2:Sorry. Conversion failed
+        note over S1
+
+        **PUT /fxTransfers/77c9d78d-c26a-4474-8b3c-99b96a814bfc/error**
+
+        {
+            "errorCode": "9999"
+            , "errorDescription": "Whatever the error was"
+        }
+        end note
+        activate D2
+        D2-->S1:200 Gotcha
+        deactivate D2
+        S1->S1:Cancel reservation for this conversion.
+        S1->D2:Sorry.  Conversion failed.
+        activate D2
+        D2-->S1:200 Gotcha
+        deactivate S1
+        D2->S1:Cancel transfer
+        note over D2
+
+        **PUT /transfers/c720ae14-fc72-4acd-9113-8b601b34ba4d/error**
+
+        {
+            "errorCode": "9999"
+            , "errorDescription": "Whatever the error was"
+        }
+        end note
+        activate S1
+        S1-->D2:200 Gotcha
+        deactivate D2
+        S1->S1:Cancel reservation for this transfer.
+        S1->D1:Sorry.  Conversion failed.
+        activate D1
+        D1-->S1:200 Gotcha
+        D1->A1:Sorry, your payment did not succeed.\nYou have not been charged for this payment.
+    else Conversion succeeded
+
+        S1->D2:Conversion succeeded subject to transfer success\n**PUT /fxTransfers/77c9d78d-c26a-4474-8b3c-99b96a814bfc**
+        activate D2
+        D2-->S1:200 Gotcha
+        deactivate S1
+        D2->D2:Let me check that the terms of the transfer\nare the same as the ones I agreed to
+        D2->D2:Yes, they do. I approve the transfer
+        D2->S1:Transfer is confirmed, here's the fulfilment
+        note over D2
+
+        **PUT /transfers/c720ae14-fc72-4acd-9113-8b601b34ba4d**
+
+        {
+            "fulfilment": "mhPUT9ZAwd-BXLfeSd7-YPh46rBWRNBiTCSWjpku90s"
+            , "completedTimestamp": "2021-08-25T14:17:08.227+01:00"
+            , "transferState": "COMMITTED"
+        }
+
+
+        end note
+        activate S1
+        S1-->D2:200 Gotcha
+        deactivate D2
+        S1->S1:Work out the obligations
+        note over S1
+        1)  Does the credit party to the transfer
+            have an account in the currency of the transfer?
+        2)      If so, create an obligation between the party of the
+                reservation for the transfer and the crdite party
+                to the transfer.
+        3)      If not, is there a dependent transfer
+                whose credit party is the credit party for the transfer?
+        4)          If so, create an obligation between the party of
+                    the reservation for the transfer
+                    and the debit party for this dependent transfer.
+        5)          If not, this is an error.
+        6)  For each dependent transfer associated with the main transfer:
+                Create an obligation between the party of the reservation
+                for the transfer and the counterparty to the transfer.
+        
+        end note
+    
+        S1->FXPM:The transfer succeeded.\nYou can clear it in your ledgers
+        note over S1
+
+        **PATCH /fxTransfers/77c9d78d-c26a-4474-8b3c-99b96a814bfc**
+
+        {
+            "fulfilment": "2e6870fb4eda9c2a29ecf376ceb5b05c"
+            , "completedTimeStamp": "2021-08-25T14:17:08.175+01:00"
+            , "conversionState": "COMMITTED"
+        }
+
+        end note
+        activate FXPM
+        FXPM->FXPM:Let's just check: does this match the stuff I sent?
+        FXPM->FXPM:It does. Great. I'll clear the conversion
+        FXPM->S1:200 Gotcha
+        deactivate FXPM
+        S1->FXPZ:The transfer succeeded.\nYou can clear it in your ledgers
+        note over S1
+
+        **PATCH /fxTransfers/77c9d78d-c26a-4474-8b3c-99b96a814bfc**
+
+        {
+            "fulfilment": "2e6870fb4eda9c2a29ecf376ceb5b05c"
+            , "completedTimeStamp": "2021-08-25T14:17:08.175+01:00"
+            , "conversionState": "COMMITTED"
+        }
+
+        end note
+        activate FXPZ
+        FXPZ->FXPZ:Let's just check: does this match the stuff I sent?
+        FXPZ->FXPZ:It does. Great. I'll clear the conversion
+        FXPZ->S1:200 Gotcha
+        deactivate FXPZ
+        note over S1
+
+        Ledger positions:
+        NBS_Bank has a debit of 5000 MWK
+        FDH_FX has a credit of 5000 MWK
+        FDH_FX has a debit of 97 ZMW
+        Zoona has a credit of 97 ZMW
+
+        end note
+        S1->D1:Transfer is complete\n**PUT /transfers/c720ae14-fc72-4acd-9113-8b601b34ba4d**
+        activate D1
+        D1-->S1:200 Gotcha
+        deactivate S1
+        D1->D1:Commit the funds in my ledgers
+        D1->A1:Transfer was completed successfully
+    end
+    deactivate D1
+end
+
+@enduml
