@@ -8,9 +8,9 @@ This document describes a proposal for supporting currency conversion in a Mojal
 
 The following table provides definitions of terms used in this document.
 
-| Term | Definition                                                                                                                                                                                                                                |
-|------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| FXP  | An FXP (Foreign Exchange Provider) is a participant in a Mojaloop scheme which provides currency conversion for FSPs in a Mojaloop scheme. An FXP must be able to participate in settlements in the Mojaloop scheme to which they belong. |
+| Term | Definition |
+|------|------------|
+| FXP  |            |
 
 ## References
 
@@ -34,17 +34,15 @@ The following table provides definitions of terms used in this document.
 | 2.4     | Remove financial information from message       | M. Richards | 21 June 2023     |
 | 2.5     | Manage fulfilment as part of transaction object | M. Richards | 22 June 2023     |
 | 2.6     | Post convening presentation and review          | M. Richards | 10 July 2023     |
+| 2.7     | Add reference currency support                  | M. Richards | 4 August 2023    |
 |         |                                                 |             |                  |
 
 # Assumptions
 
 1.  We assume the existence of an FX API: a separate API which participants in a Mojaloop scheme can use to access the facilities required for currency conversion.
 2.  We assume that the list of currencies in which a payee’s account(s) can receive is returned as part of the discovery process (i.e. by an existing **PUT /parties** call in the FSPIOP API.)
-3.  
-4.  
-5.  We assume that the description of the transaction’s terms which is given in the body of the **POST /quotes** call and included in the **Transaction** object in the **PUT /quotes** and **POST /transfers** calls will allow the definition of a send amount and a receive amount separately.
-6.  We assume that a version of the **/services** resource defined in the PISP API will allow a DFSP to identify participants in the scheme which offer FXP services, but that this service will be provided as part of the FX API.
-7.  
+3.  We assume that the description of the transaction’s terms which is given in the body of the **POST /quotes** call and included in the **Transaction** object in the **PUT /quotes** and **POST /transfers** calls will allow the definition of a send amount and a receive amount separately.
+4.  We assume that a version of the **/services** resource defined in the PISP API will allow a DFSP to identify participants in the scheme which offer FXP services, but that this service will be provided as part of the FX API.
 
 # Use cases
 
@@ -62,7 +60,7 @@ Where a participant needs to obtain an amount of a particular currency to suppor
 
 ## PvP
 
-A participant may enlist the FXP as a participant in the transaction. In this case, the transaction consists of two transfers: one between the payer DFSP and the FXP in the source currency, and one between the FXP and the payee DFSP in the target currency. There are two settlements, one for each currency movement.
+A participant may enlist the FXP as a participant in the transaction. In this case, the transaction consists of two : one between the payer DFSP and the FXP in the source currency, and one between the FXP and the payee DFSP in the target currency. There are two settlements, one for each currency movement.
 
 The first of these use cases does not require the involvement of an FXP; the others do.
 
@@ -103,27 +101,32 @@ This design proposes an alternative approach. It proposes that, when the FXP con
 
 A positive response from the FXP to the currency conversion execution request means: I have approved the transfer and assent to its final determination by the switch. The switch should not ratify a transfer which includes currency conversion unless it can satisfy itself that the FXP has assented to the transfer by returning the fulfilment which matches the condition that the switch holds.
 
-# 
+# Support for a reference currency
 
-1.  
-2.  
-3.  
-4.  
-5.  
-6.  
-7.  
-8.  
-9.  
-10. 
-11. 
-    1.  
-        1.  
-        2.  
-            1.  
-            2.  
-    2.  
+In some cases, an FXP will provide a direct conversion between the currencies of the debtor and creditor accounts. In other cases, however, this will not be possible: for instance, if the transfer is being executed between two currencies which are widely separated geographically and/or relatively illiquid. In cases like this, it may be necessary to convert from the source currency to a reference currency (such as USD, for instance) using one FXP, and from the reference currency to the target currency using another FXP. This use case can be supported using the existing functionality of the currency conversion API.
 
-# 
+There is a further use case to support. In this use case, a single FXP is used, but the transfer is routed through a reference currency in order to support architectures where a meta-scheme is used to allow all parties to settle between each other using a single reference currency. In this use case, currency pre-purchase should not be supported.
+
+This use case can also use existing functionality, and will be able to support currency conversion initiated by the payee for a RECIVE amount. This will work in the following way:
+
+1.  The debtor DFSP requests a quotation, giving the required amount in the target currency and specifying that it can send in its source currency.
+2.  The creditor DFSP requests conversion from the source currency to the target currency.
+3.  The FXP, which knows that it needs to use a reference currency, overrides the source currency requested by the creditor DFSP and returns a quotation for a conversion from the reference currency to the target currency.
+4.  The creditor DFSP approves its quotation based on the conversion and returns it to the debtor DFSP. The amount of the transfer will now be expressed in the reference currency.
+5.  The debtor DFSP registers that it too will need to obtain currency conversion so that it can send in the reference currency. It asks for a conversion from the source currency to the reference currency. Note that this conversion does not form part of the terms of the transfer, and there is therefore no need for the transfer to be re-validated by the creditor DFSP.
+6.  When the terms of the currency conversion are approved, the debtor DFSP knows how much will be debited from its customer’s account. It can show all the information relating to the payment to its customer, and the customer can approve.
+7.  When the customer approves the payment, the debtor DFSP executes the currency conversion, specifying that the conversion is dependent on the success of the associated transfer. The switch makes a reservation in the source currency against the account of the debtor DFSP.
+8.  On successful execution of the currency conversion, the debtor DFSP requests execution of the transfer, which is denominated in the reference currency. The switch makes a reservation in the reference currency against the account of the FXP.
+9.  On receipt of the payment execution request, the creditor DFSP requests execution of the conversion to the target currency, specifying that the conversion is dependent on the success of the associated transfer. The switch makes a reservation in the target currency against the account of the second FXP.
+10. On successful execution of the currency conversion, the creditor DFSP approves the transfer.
+11. The switch assigns obligations using the following algorithm:
+    1.  Does the credit party to the transfer have an account in the currency of the transfer?
+        1.  If so, create an obligation between the party of the reservation for the transfer and the credit party to the transfer.
+        2.  If not, is there a dependent transfer whose credit party is the credit party for the transfer?
+            1.  If so, create an obligation between the party of the reservation for the transfer and the debit party for this dependent transfer.
+            2.  If not, this is an error.
+    2.  For each dependent transfer associated with the main transfer:
+        1.  Create an obligation between the party of the reservation for the transfer and the counterparty to the transfer.
 
 # Functions of an FXP
 
@@ -145,7 +148,7 @@ We allow either party to a transfer to request currency conversion, and optional
 
 When the FXP receives a conversion request, it fills in the **target.amount.principalAmount** field (if this is blank) or the **source.amount.principalAmount** field (if this is blank.) If both fields are blank, or if both fields contain a value, then an error is returned. The requester can specify a time for which they want the currency conversion to be valid.
 
-If the conversion can be approved, then the FXP signs the **conversion** object and creates a condition from the signature. It adds an expiry time (which need not be later than the expiry time proposed by the requester,) and returns the resulting **onversion** object to the caller.
+If the conversion can be approved, then the FXP signs the **conversion** object and creates a condition from the signature. It adds an expiry time (which need not be later than the expiry time proposed by the requester,) and returns the resulting **conversion** object to the caller.
 
 ## Transaction execution
 
@@ -339,18 +342,18 @@ An FXP will be able to specify a charge which it proposes to levy on the currenc
 
 A DFSP will be able to request a currency conversion, and an FX provider will be able to describe its involvement in a proposed transfer, using a **Conversion** object. The **Conversion** object will have the structure described below.
 
-| Name            | Cardinality | Type          | Comment                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-|-----------------|-------------|---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| conversionId    | 1           | CorrelationId | An end-to-end identifier for the conversion request.                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| TransId         | 0..1        | CorrelationId | The transaction ID of the transfer on whose success this currency conversion depends. If this is a bulk currency conversion which is not dependent on a transfer, then this field should be omitted.                                                                                                                                                                                                                                                                                  |
-| counterPartyFsp | 1           | FspId         | The ID of the FXP performing the conversion                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| amountType      | 1           | AmountType    | This is the AmountType for the base transaction, as described in Section 7.3.1 of **Ref 1** above. If it is set to **SEND**, then any charges levied by the FXP as part of the transaction will be deducted by the FXP from the **amount** shown for the **target** party in the conversion. If it is set to **RECEIVE**, then any charges levied by the FXP as part of the transaction will be added by the FXP to the **amount** shown for the **source** party in the conversion.  |
-| initiatingFsp   | 1           | fspId         | The id of the participant who is requesting a currency conversion                                                                                                                                                                                                                                                                                                                                                                                                                     |
-| sourceAmount    | 1           | FxMoney       | The amount to be converted, expressed in the source currency .                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| targetAmount    | 1           | FxMoney       | The converted amount, expressed in the target currency                                                                                                                                                                                                                                                                                                                                                                                                                                |
-| validity        | 1           | DateTime      | The end of the period for which the currency conversion is required to remain valid.                                                                                                                                                                                                                                                                                                                                                                                                  |
-| charges         | 0..16       | Charge        | One or more charges which the FXP intends to levy as part of the currency conversion, or which the payee DFSP intends to add to the amount transferred.                                                                                                                                                                                                                                                                                                                               |
-| extensionList   | 0..1        | ExtensionList | Optional extension list, specific to the deployment.                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| Name                  | Cardinality | Type          | Comment                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+|-----------------------|-------------|---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| conversionId          | 1           | CorrelationId | An end-to-end identifier for the conversion request.                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| determiningTransferId | 0..1        | CorrelationId | The transaction ID of the transfer on whose success this currency conversion depends. If this is a bulk currency conversion which is not dependent on a transfer, then this field should be omitted.                                                                                                                                                                                                                                                                                  |
+| counterPartyFsp       | 1           | FspId         | The ID of the FXP performing the conversion                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| amountType            | 1           | AmountType    | This is the AmountType for the base transaction, as described in Section 7.3.1 of **Ref 1** above. If it is set to **SEND**, then any charges levied by the FXP as part of the transaction will be deducted by the FXP from the **amount** shown for the **target** party in the conversion. If it is set to **RECEIVE**, then any charges levied by the FXP as part of the transaction will be added by the FXP to the **amount** shown for the **source** party in the conversion.  |
+| initiatingFsp         | 1           | fspId         | The id of the participant who is requesting a currency conversion                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| sourceAmount          | 1           | FxMoney       | The amount to be converted, expressed in the source currency .                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| targetAmount          | 1           | FxMoney       | The converted amount, expressed in the target currency                                                                                                                                                                                                                                                                                                                                                                                                                                |
+|                       | 1           | DateTime      | The end of the period for which the currency conversion is required to remain valid.                                                                                                                                                                                                                                                                                                                                                                                                  |
+| charges               | 0..16       | Charge        | One or more charges which the FXP intends to levy as part of the currency conversion, or which the payee DFSP intends to add to the amount transferred.                                                                                                                                                                                                                                                                                                                               |
+| extensionList         | 0..1        | ExtensionList | Optional extension list, specific to the deployment.                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 
 ### FxMoney
 
@@ -375,6 +378,14 @@ This section describes the services that can be requested on the resource **/ser
 
 The HTTP request **GET /services/FXP** is used to request information about the participants in a scheme who offer currency conversion services, and optionally to restrict the search to participants who offer currency conversion services in a particular currency corridor. The required corridor is specified by giving the ISO 4217 currency code for the source currency and the target currency in the *\<sourceCurrency\>* and *\<targetCurrency\>* fields: for instance **GET /services/FXP/KES/ZAR** is used to request a list of participants who support conversions from Kenyan shillings to South African rand.
 
+A DFSP may request that the **services** call should return all the FXPs who will undertake conversion from, or to, a particular currency without specifying what the counter-currency should be. For instance, to return a list of all the FXPs who support conversion to ZAR:
+
+**GET /services/FXP//ZAR**
+
+To return a list of all the FXPs who support conversion from KES:
+
+**GET /services/FXP/KES/**
+
 **Note** that:
 
 -   If no currency corridor is specified, then the service makes no guarantee that a specific FXP will in fact be able to perform any specific currency conversion.
@@ -396,15 +407,15 @@ The data model for the callback is as follows:
 
 The **fxQuotes** resource will be used by a DFSP to request an FXP to confirm a proposed FX conversion.
 
-The data model of the POST request will be a **conversion** object (see Section ) with at least the following items present:
+The data model of the POST request will be a **conversion** object (see Section 7.3.2 above) with at least the following items present:
 
-1.  **fxQuoteId**: the ID to be used to identify the conversion request.
-2.  **fxpId**: the FXP’s Fsp ID.
-3.  **source.fspId**: the fspId of the payer party.
-4.  **source.amount.currency**: the source currency to be used for the conversion.
-5.  **target.fspId**: the fspId of the payee party.
-6.  **target.amount.currency**: the target currency to be used for the conversion.
-7.  *Either* the **source.amount.principalAmount**, if the amount in the target currency is to be calculated, *or* the **target.amount.principalAmount** if the amount in the source currency is to be calculated.
+1.  : the ID to be used to identify the conversion request.
+2.  : the FXP’s Fsp ID.
+3.  : the fspId of the payer party.
+4.  **source.currency**: the source currency to be used for the conversion.
+5.  
+6.  **target.currency**: the target currency to be used for the conversion.
+7.  *Either* the **sourcemount.**, if the amount in the target currency is to be calculated, *or* the **targetmount.mount** if the amount in the source currency is to be calculated.
 
 #### Requests
 
@@ -421,7 +432,7 @@ The HTTP request **POST /fxQuotes** is used to ask an FXP to provide a quotation
 | Name                | Cardinality | Type                      | Comment                                                               |
 |---------------------|-------------|---------------------------|-----------------------------------------------------------------------|
 | conversionRequestId | 1           | CorrelationId             | An end-to-end identifier for the quotation request.                   |
-| conversion          | 1           | [Conversion](#conversion) | The terms of the currency conversion for which a quotation is sought. |
+| conversionTerms     | 1           | [Conversion](#conversion) | The terms of the currency conversion for which a quotation is sought. |
 
 #### Responses
 
@@ -433,10 +444,11 @@ The callback **PUT /fxQuotes/**\<ID\> is used to inform the requester about the 
 
 The data model for the callback is as follows:
 
-| Name            | Cardinality | Type                      | Comment                                                                                         |
-|-----------------|-------------|---------------------------|-------------------------------------------------------------------------------------------------|
-| condition       | 0..1        | IlpCondition              | The ILP condition for the conversion.                                                           |
-| conversionTerms | 1           | [Conversion](#conversion) | The terms under which the FXP will undertake the currency conversion proposed by the requester. |
+| Name            | Cardinality | Type                      | Comment                                                                                          |
+|-----------------|-------------|---------------------------|--------------------------------------------------------------------------------------------------|
+| condition       | 0..1        | IlpCondition              | The ILP condition for the conversion.                                                            |
+|                 |             |                           |                                                                                                  |
+| conversionTerms | 1           | [Conversion](#conversion) | The terms under which the FXP will undertake the currency conversion proposed by the requester.  |
 
 #### Error Callbacks
 
@@ -466,15 +478,16 @@ The HTTP request **GET /fxTransfers/**\<ID\> is used to request information rega
 
 The HTTP request **POST /fxTransfers** is used to ask an FXP to confirm the execution of an agreed currency conversion. Its data model will be as follows:
 
-| Name            | Cardinality | Type          | Comment                                                                                                                                                                                             |
-|-----------------|-------------|---------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| commitRequestId | 1           | CorrelationId | An end-to-end identifier for the confirmation request.                                                                                                                                              |
-| TransId         | 0..1        | CorrelationId | The transaction ID of the transfer to which this currency conversion relates, if the conversion is part of a transfer. If the conversion is a bulk currency purchase, this field should be omitted. |
-| requestingFsp   | 1           | FspId         | Identifier for the FSP who is requesting a currency conversion                                                                                                                                      |
-| respondingFxp   | 1           | FspId         | Identifier for the FXP who is performing the currency conversion                                                                                                                                    |
-| sourceAmount    | 1           | Money         | The amount being offered for conversion by the requesting FSP                                                                                                                                       |
-| targetAmount    | 1           | Money         | The amount which the FXP is to credit to the requesting FSP in the target currency                                                                                                                  |
-| condition       | 1           | llpCondition  | ILP condition received by the requesting FSP when the quote was approved.                                                                                                                           |
+| Name                  | Cardinality | Type          | Comment                                                                                                                                                                                                |
+|-----------------------|-------------|---------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| commitRequestId       | 1           | CorrelationId | An end-to-end identifier for the confirmation request.                                                                                                                                                 |
+| determiningTransferId | 0..1        | CorrelationId | The transaction ID of the transfer to which this currency conversion relates, if the conversion is part of a transfer. If the conversion is a bulk currency purchase, this field sfrehould be omitted. |
+| requestingFsp         | 1           | FspId         | Identifier for the FSP who is requesting a currency conversion                                                                                                                                         |
+| respondingFxp         | 1           | FspId         | Identifier for the FXP who is performing the currency conversion                                                                                                                                       |
+| sourceAmount          | 1           | Money         | The amount being offered for conversion by the requesting FSP                                                                                                                                          |
+| targetAmount          | 1           | Money         | The amount which the FXP is to credit to the requesting FSP in the target currency                                                                                                                     |
+| condition             | 1           | llpCondition  | ILP condition received by the requesting FSP when the quote was approved.                                                                                                                              |
+|                       |             |               |                                                                                                                                                                                                        |
 
 #### Responses
 
@@ -495,7 +508,7 @@ The data model for the callback is as follows:
 
 ##### PATCH /fxTransfers/\<ID\>
 
-The callback **PATCH /fxTransfers/**\<ID\> is used to inform the requester about the final determination by the switch of the transfer a request for execution of a currency conversion. The *\<ID\>* field in the URI should contain the commitRequestId that was used when the execution of the currency conversion was requested.
+The callback **PATCH /fxTransfers/**\<ID\> is used to inform the requester about the final determination by the switch of the transfer which determines the status of a request for execution of a currency conversion. The *\<ID\>* field in the URI should contain the commitRequestId that was used when the execution of the currency conversion was requested.
 
 The data model for the callback is as follows:
 
