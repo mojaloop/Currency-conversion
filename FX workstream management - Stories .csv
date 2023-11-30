@@ -1,0 +1,53 @@
+Epic,Story,Story # in GitHub,Description,Relevant References,Team Assigned,Status,Notes
+Common Elements,Swagger (open API) of the FSPIOP,3483,,,INFITX,In progress,
+,"SDK backend Open API (Swagger) definitions for FXP, Payer FSP and Payee FSP ",3573,,,INFITX,In progress,
+,API call for services,,"before FX call happens, switch supporting API - it will give entities like the FXP or even PISP (name of entity and type), then FX flows, use that entity in sequence as other things take place. Fairly independent of FX work.",,Tentative - Thitsaworks,Not yet started,
+,Add new functions to SDK ,,,,INFITX ,Not yet started - next sprint,
+,TTK,3593,"Incorporate FX into TTK and core test harness; <evolving, absorb into acceptance of criteria of individual stories>",,INFITX,In progress,
+Cyril,Cyril POV - payer; single txn,3574,test end to end to see if Cyril works; making sure code works with payer DFSP initiated currency conversion; does include an interface,Refer to diagrams- go through these as a group in our next standup (paul m.to share out implementation presentation in DA minutes) ,INFITX,In progress,aligns to paul and michael's documentation directly
+,Cyril POV - payee; single txn,,,Refer to diagrams- go through these as a group in our next standup (paul m.to share out implementation presentation in DA minutes) ,,,
+,Cyril POV - reference currency; single txn,,,Refer to diagrams- go through these as a group in our next standup (paul m.to share out implementation presentation in DA minutes) ,,,
+,POV - bulk purchase of currency by DFSP (may not actually use Cyril),,,bulk purchase of currency by DFSP,,,low priority; consider role of cyril here- no payment associated with the bulk purchase (it is just a transfer)
+,Cyril - Hardened,,,Refer to diagrams- go through these as a group in our next standup (paul m.to share out implementation presentation in DA minutes) ,,,
+General Functions,"POV: Perform liquidity check and reserve if successful, given a DFSP ID, an account type, a currency and an amount. ",3574,,,INFITX,In progress,
+,"Hardened: Perform liquidity check and reserve if successful, given a DFSP ID, an account type, a currency and an amount. ",Not yet created,,,INFITX,Not yet started,
+,"POV: Create obligation and remove reservation, given a debtor DFSP ID, a creditor DFSP ID, an account type, a currency and an amount.",3574,,,INFITX,In progress,
+,"Hardened: Create obligation and remove reservation, given a debtor DFSP ID, a creditor DFSP ID, an account type, a currency and an amount.",Not yet created,,,INFITX,Not yet started,
+Endpoints at hub,Process GET /services/FXP  ,,see Swagger for the services endpoint (still in process); need way to register FXP as a service provider (and same with PISP); need some changes to database to hold information about DFSPs that will act as FXPs but also need to specify which kinds of conversion they will support,,,,have pattern with Oracle- can replicate; priority 1
+,Process POST fxQuotes,,extend existing quoting service to provide new endpoints - existing service operates in two mode - lets only do for passthrough. no database required later (can use audit trail if necessary); we won't have any party (end user) information; other DFSPs can call FXPs; just a pass through as far as the switch is concerned; doesnt require persistant storage but does need to send an order trail; DFSP is simply requesting FX,,,,simple task; priority 2
+,Process PUT /fxQuotes,,exactly the same as POST fx Quotes - can do as separate story or with POST,,,,simple task; priority 2
+,Process POST /fxTransfers - Check whether debtor or creditor party is performing conversion,,need to familiarize with Cyril POV before tackling this - cannot happen in isolation; once service in place and quotes in place and cyril done; hub capable of all use cases; tricky part is setting up test cases; run them to make sure it is working end to end; start with debtor party (sending DFSP) - in line with INFITX testing,,,,
+,Process POST /fxTransfers - POV: Call 'Process GET /services/FXP' above with correct DFSP ID ,3574,,,INFITX,Not yet started,
+,Process POST /fxTransfers - Hardened: Call 'Process GET/services/FXP' above with correct DFSP ID ,Not yet created,,,INFITX,Not yet started,
+,Process PUT /fxTransfers - Fulfillment - POV,3574,,,INFITX,Not yet started,
+,Process PUT /fxTransfers - Fulfillment - Hardened,Not yet created,,,INFITX,Not yet started,
+,"Process PUT /fxTransfers-Mark conversion as complete in Cyril  
+",,"requires understanding of Cyril first; a branch from the Cyril POV; have this focused around test cases; when FXP approves the transfer, we dont actually do anything until the transfer itself is compelted but we want to record that the conversion has been approved. bc when payment completed, we check conversions and if any not completed we have a problem; need to test success and error; wehn it is completed send PATCH back; internally also need to mark as complete (in Cyril); current implementation stores Cyril in SQL database",,,,simple task; 
+,Process POST /transfers - Cyril components - Decide whether or not to invoke FX process,,"requires understanding of Cyril first; additional step; need four use cases to test here (payer- specify amount send, payer- specify amount receive, reference currency, payee - specify amount send, payee- specify amount received). initial story to develop test cases for this",,,,simple task; 
+,"Process POST /transfers - Cyril components - Decide which DFSP to reserve against
+",,requires understanding of Cyril first,,,,simple task;  
+,Process POST /transfers - Add payment to Cyril - call interface- POV,3574,,,INFITX,Not yet started,
+,Process POST /transfers -Add payment to Cyril -call interface- Hardened,Not yet created,,,INFITX,Not yet started,
+,Process POST /transfers - Call 'Process GET /services/FXP' above with correct DFSP ID  - POV,3574,,,INFITX,Not yet started,
+,Process POST /transfers - Call 'Process GET /services/FXP' above with correct DFSP ID  - Hardened,Not yet created,,,INFITX,Not yet started,
+,Process PUT /transfers - Figure out what obligations to create by analysing the contents of the Cyril,,,,,,
+,Process PUT /transfers - Call 'Process POST fxQuotes' above with the result(s) - POV,3574,,,INFITX,Not yet started,
+,Process PUT /transfers - Call 'Process POST fxQuotes' above with the result(s) - Hardened,Not yet created,,,INFITX,Not yet started,
+Mojaloop connector functions (Payment Manager functions),Mojaloop connector for FXP - POST /fxQuotes flow,Not yet created,,,INFITX,Not yet started,
+,Mojaloop connector for FXP - POST /fxTransfers flow,Not yet created,,,INFITX,Not yet started,
+,Mojaloop connector for FXP - PATCH /fxTransfers flow,Not yet created,,,INFITX,Not yet started,
+,Mojaloop connector for DFSP - POST /quotes send ,Not yet created,,,INFITX,Not yet started,
+,Mojaloop connector for DFSP - POST /quotes receive,Not yet created,,,INFITX,Not yet started,
+,Mojaloop connector for DFSP - PUT /fxQuotes,Not yet created,,,INFITX,Not yet started,
+,Mojaloop connector for DFSP - PUT /quotes,Not yet created,,,INFITX,Not yet started,
+,Mojaloop connector for DFSP - POST /transfers send ,Not yet created,,,INFITX,Not yet started,
+,Mojaloop connector for DFSP - POST /transfers receive,Not yet created,,,INFITX,Not yet started,
+,Mojaloop connector for DFSP - PUT /fxTransfers- Payer Conversion route,Not yet created,,,INFITX,Not yet started,
+,Mojaloop connector for DFSP - PUT /fxTransfers- Payee Conversion route,Not yet created,,,INFITX,Not yet started,
+use cases ,Sending DFSP (debtor party) - send amount type,,golden path and error / unhappy path; define requirements to use as testing,,,,
+,Sending DFSP  (debtor party)  - receive amount type,,golden path and error / unhappy path; define requirements to use as testing,,,,
+,Receiving DFSP (creditor party) - send amount type,,golden path and error / unhappy path; define requirements to use as testing,,,,
+,Receiving DFSP  (creditor party)  - receive amount type,,golden path and error / unhappy path; define requirements to use as testing,,,,
+,Reference currency,,golden path and error / unhappy path; define requirements to use as testing,,,,
+,Bulk CC purchase,,golden path and error / unhappy path; define requirements to use as testing,,,,
+Other,run existing POV to familiarize self with it ,,run end to end test which is not golden path,,Thitsaworks,,priority 3
