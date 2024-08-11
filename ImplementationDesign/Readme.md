@@ -4,11 +4,12 @@ The Mojaloop currency conversion functional implementation includes support for 
 There are two variation of the implementation. 
  - Sending funds from a local currency
  - Making a payment in a foreign currency
+
 The difference between these use case concerns the amount Type that is specified when making the transfer.
 
 ## Sending funds to an account in another currency
 For this use case, the Payer DFSP will specify the transfer with amount type **SEND** and define the transfer amount in the **Payer's local currency** (the source currency).
-This is a typical P2P remittance transfer.
+An secondary use case example for this is a P2P remittance transfer.
 
 Below is a detailed sequence diagram that shows the complete flow, and includes the Mojaloop connector and integration APIs for all participant organizations.
 
@@ -16,7 +17,7 @@ Below is a detailed sequence diagram that shows the complete flow, and includes 
 
 ## Making a payment in another currency
 For this use case, the Payer DFSP will specify the transfer with amount type **RECEIVE** and define the transfer amount in the **Payee's local currency** (the target currency).
-This is a typical cross boarder Merchant Payment.
+An secondary use case example for this is a cross boarder Merchant Payment.
 
 Below is a detailed sequence diagram that shows the complete flow, and includes the Mojaloop connector and integration APIs for all participant organizations.
 
