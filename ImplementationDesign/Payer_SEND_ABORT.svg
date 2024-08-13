@@ -1,0 +1,1157 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="7739px" preserveAspectRatio="none" style="width:2327px;height:7739px;background:#FFFFFF;" version="1.1" viewBox="0 0 2327 7739" width="2327px" zoomAndPan="magnify"><defs/><g><rect height="45.2188" style="stroke:#00000000;stroke-width:1.0;fill:none;" width="372" x="973.5" y="10"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="344" x="987.5" y="29.5332">Remittance Transfer using Mojaloop FX APIs POC</text><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="362" x="978.5" y="47.1426">Payer DFSP requests conversion with SEND amount</text><rect fill="#ADD8E6" height="7671.0391" style="stroke:#181818;stroke-width:0.5;" width="100" x="327" y="62.2188"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="76" x="339" y="75.7139">Payer DFSP</text><rect fill="#DDDDDD" height="7671.0391" style="stroke:#181818;stroke-width:0.5;" width="88" x="1555" y="62.2188"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="74" x="1562" y="75.7139">FX provider</text><rect fill="#ADD8E6" height="7671.0391" style="stroke:#181818;stroke-width:0.5;" width="88" x="1882" y="62.2188"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="79" x="1886.5" y="75.7139">Payee DFSP</text><rect fill="#FFFFFF" height="384.2188" style="stroke:#181818;stroke-width:1.0;" width="10" x="372" y="199.1016"/><rect fill="#FFFFFF" height="82.0547" style="stroke:#181818;stroke-width:1.0;" width="10" x="372" y="759.4297"/><rect fill="#FFFFFF" height="1282.5547" style="stroke:#181818;stroke-width:1.0;" width="10" x="372" y="997.9453"/><rect fill="#FFFFFF" height="741.25" style="stroke:#181818;stroke-width:1.0;" width="10" x="372" y="2327.2031"/><rect fill="#FFFFFF" height="2214.7734" style="stroke:#181818;stroke-width:1.0;" width="10" x="372" y="3320.6172"/><rect fill="#FFFFFF" height="60.3516" style="stroke:#181818;stroke-width:1.0;" width="10" x="372" y="6630.1563"/><rect fill="#FFFFFF" height="60.3516" style="stroke:#181818;stroke-width:1.0;" width="10" x="372" y="7567.2969"/><rect fill="#FFFFFF" height="126.4063" style="stroke:#181818;stroke-width:1.0;" width="10" x="790" y="290.1563"/><rect fill="#FFFFFF" height="113.0547" style="stroke:#181818;stroke-width:1.0;" width="10" x="790" y="470.2656"/><rect fill="#FFFFFF" height="30.3516" style="stroke:#181818;stroke-width:1.0;" width="10" x="790" y="811.1328"/><rect fill="#FFFFFF" height="407.3828" style="stroke:#181818;stroke-width:1.0;" width="10" x="790" y="1049.6484"/><rect fill="#FFFFFF" height="76.7031" style="stroke:#181818;stroke-width:1.0;" width="10" x="790" y="2250.5"/><rect fill="#FFFFFF" height="60.3516" style="stroke:#181818;stroke-width:1.0;" width="10" x="790" y="2418.2578"/><rect fill="#FFFFFF" height="456.4375" style="stroke:#181818;stroke-width:1.0;" width="10" x="790" y="2612.0156"/><rect fill="#FFFFFF" height="620.1406" style="stroke:#181818;stroke-width:1.0;" width="10" x="790" y="3400.3203"/><rect fill="#FFFFFF" height="295.1641" style="stroke:#181818;stroke-width:1.0;" width="10" x="790" y="5617.4453"/><rect fill="#FFFFFF" height="585.4375" style="stroke:#181818;stroke-width:1.0;" width="10" x="790" y="6074.7188"/><rect fill="#FFFFFF" height="860.6016" style="stroke:#181818;stroke-width:1.0;" width="10" x="790" y="6736.6953"/><rect fill="#FFFFFF" height="853.4688" style="stroke:#181818;stroke-width:1.0;" width="10" x="1594" y="1427.0313"/><rect fill="#FFFFFF" height="936.8984" style="stroke:#181818;stroke-width:1.0;" width="10" x="1594" y="3990.4609"/><rect fill="#FFFFFF" height="168.4609" style="stroke:#181818;stroke-width:1.0;" width="10" x="1599" y="4729.8984"/><rect fill="#FFFFFF" height="175.4609" style="stroke:#181818;stroke-width:1.0;" width="10" x="1594" y="6407.9922"/><rect fill="#FFFFFF" height="235.1641" style="stroke:#181818;stroke-width:1.0;" width="10" x="1594" y="7183.6719"/><rect fill="#FFFFFF" height="120.0547" style="stroke:#181818;stroke-width:1.0;" width="10" x="1921" y="380.2109"/><rect fill="#FFFFFF" height="193.4063" style="stroke:#181818;stroke-width:1.0;" width="10" x="1921" y="2448.6094"/><rect fill="#FFFFFF" height="136.4063" style="stroke:#181818;stroke-width:1.0;" width="10" x="1921" y="5882.6094"/><rect height="884.8984" style="stroke:#000000;stroke-width:1.5;fill:none;" width="1163.5" x="717.5" y="4035.4609"/><rect height="224.1641" style="stroke:#000000;stroke-width:1.5;fill:none;" width="1143.5" x="727.5" y="4689.1953"/><rect height="594.0313" style="stroke:#000000;stroke-width:1.5;fill:none;" width="1283" x="321" y="4934.3594"/><rect height="1601.6328" style="stroke:#000000;stroke-width:1.5;fill:none;" width="2148" x="10" y="6034.0156"/><line style="stroke:#181818;stroke-width:0.5;fill:none;stroke-dasharray:5.0,5.0;" x1="67" x2="67" y1="150.3984" y2="7652.6484"/><line style="stroke:#181818;stroke-width:0.5;fill:none;stroke-dasharray:5.0,5.0;" x1="377" x2="377" y1="150.3984" y2="7652.6484"/><line style="stroke:#181818;stroke-width:0.5;fill:none;stroke-dasharray:5.0,5.0;" x1="794.5" x2="794.5" y1="150.3984" y2="7652.6484"/><line style="stroke:#181818;stroke-width:0.5;fill:none;stroke-dasharray:5.0,5.0;" x1="1599" x2="1599" y1="150.3984" y2="7652.6484"/><line style="stroke:#181818;stroke-width:0.5;fill:none;stroke-dasharray:5.0,5.0;" x1="1926" x2="1926" y1="150.3984" y2="7652.6484"/><line style="stroke:#181818;stroke-width:0.5;fill:none;stroke-dasharray:5.0,5.0;" x1="2297" x2="2297" y1="150.3984" y2="7652.6484"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="88" x="20" y="147.3223">$senderName</text><ellipse cx="67" cy="81.2891" fill="#E2E2F0" rx="8" ry="8" style="stroke:#181818;stroke-width:0.5;"/><path d="M67,89.2891 L67,116.2891 M54,97.2891 L80,97.2891 M67,116.2891 L54,131.2891 M67,116.2891 L80,131.2891 " fill="none" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="88" x="20" y="7666.1816">$senderName</text><ellipse cx="67" cy="7677.7578" fill="#E2E2F0" rx="8" ry="8" style="stroke:#181818;stroke-width:0.5;"/><path d="M67,7685.7578 L67,7712.7578 M54,7693.7578 L80,7693.7578 M67,7712.7578 L54,7727.7578 M67,7712.7578 L80,7727.7578 " fill="none" style="stroke:#181818;stroke-width:0.5;"/><rect fill="#E2E2F0" height="31.6094" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="92" x="331" y="117.7891"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="78" x="338" y="139.3223">Payer DFSP</text><rect fill="#E2E2F0" height="31.6094" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="92" x="331" y="7651.6484"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="78" x="338" y="7673.1816">Payer DFSP</text><rect fill="#E2E2F0" height="31.6094" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="115" x="737.5" y="117.7891"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="101" x="744.5" y="139.3223">Mojaloop Switch</text><rect fill="#E2E2F0" height="31.6094" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="115" x="737.5" y="7651.6484"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="101" x="744.5" y="7673.1816">Mojaloop Switch</text><rect fill="#E2E2F0" height="49.2188" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="80" x="1559" y="100.1797"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="26" x="1586" y="121.7129">FXP</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="66" x="1566" y="139.3223">Connector</text><rect fill="#E2E2F0" height="49.2188" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="80" x="1559" y="7651.6484"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="26" x="1586" y="7673.1816">FXP</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="66" x="1566" y="7690.791">Connector</text><rect fill="#E2E2F0" height="66.8281" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="80" x="1886" y="82.5703"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="40" x="1906" y="104.1035">Payee</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="57" x="1897.5" y="121.7129">Mojaloop</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="66" x="1893" y="139.3223">Connector</text><rect fill="#E2E2F0" height="66.8281" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="80" x="1886" y="7651.6484"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="40" x="1906" y="7673.1816">Payee</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="57" x="1897.5" y="7690.791">Mojaloop</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="66" x="1893" y="7708.4004">Connector</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="30" x="2279" y="147.3223">Yaro</text><ellipse cx="2297" cy="81.2891" fill="#E2E2F0" rx="8" ry="8" style="stroke:#181818;stroke-width:0.5;"/><path d="M2297,89.2891 L2297,116.2891 M2284,97.2891 L2310,97.2891 M2297,116.2891 L2284,131.2891 M2297,116.2891 L2310,131.2891 " fill="none" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="30" x="2279" y="7666.1816">Yaro</text><ellipse cx="2297" cy="7677.7578" fill="#E2E2F0" rx="8" ry="8" style="stroke:#181818;stroke-width:0.5;"/><path d="M2297,7685.7578 L2297,7712.7578 M2284,7693.7578 L2310,7693.7578 M2297,7712.7578 L2284,7727.7578 M2297,7712.7578 L2310,7727.7578 " fill="none" style="stroke:#181818;stroke-width:0.5;"/><rect fill="#FFFFFF" height="384.2188" style="stroke:#181818;stroke-width:1.0;" width="10" x="372" y="199.1016"/><rect fill="#FFFFFF" height="82.0547" style="stroke:#181818;stroke-width:1.0;" width="10" x="372" y="759.4297"/><rect fill="#FFFFFF" height="1282.5547" style="stroke:#181818;stroke-width:1.0;" width="10" x="372" y="997.9453"/><rect fill="#FFFFFF" height="741.25" style="stroke:#181818;stroke-width:1.0;" width="10" x="372" y="2327.2031"/><rect fill="#FFFFFF" height="2214.7734" style="stroke:#181818;stroke-width:1.0;" width="10" x="372" y="3320.6172"/><rect fill="#FFFFFF" height="60.3516" style="stroke:#181818;stroke-width:1.0;" width="10" x="372" y="6630.1563"/><rect fill="#FFFFFF" height="60.3516" style="stroke:#181818;stroke-width:1.0;" width="10" x="372" y="7567.2969"/><rect fill="#FFFFFF" height="126.4063" style="stroke:#181818;stroke-width:1.0;" width="10" x="790" y="290.1563"/><rect fill="#FFFFFF" height="113.0547" style="stroke:#181818;stroke-width:1.0;" width="10" x="790" y="470.2656"/><rect fill="#FFFFFF" height="30.3516" style="stroke:#181818;stroke-width:1.0;" width="10" x="790" y="811.1328"/><rect fill="#FFFFFF" height="407.3828" style="stroke:#181818;stroke-width:1.0;" width="10" x="790" y="1049.6484"/><rect fill="#FFFFFF" height="76.7031" style="stroke:#181818;stroke-width:1.0;" width="10" x="790" y="2250.5"/><rect fill="#FFFFFF" height="60.3516" style="stroke:#181818;stroke-width:1.0;" width="10" x="790" y="2418.2578"/><rect fill="#FFFFFF" height="456.4375" style="stroke:#181818;stroke-width:1.0;" width="10" x="790" y="2612.0156"/><rect fill="#FFFFFF" height="620.1406" style="stroke:#181818;stroke-width:1.0;" width="10" x="790" y="3400.3203"/><rect fill="#FFFFFF" height="295.1641" style="stroke:#181818;stroke-width:1.0;" width="10" x="790" y="5617.4453"/><rect fill="#FFFFFF" height="585.4375" style="stroke:#181818;stroke-width:1.0;" width="10" x="790" y="6074.7188"/><rect fill="#FFFFFF" height="860.6016" style="stroke:#181818;stroke-width:1.0;" width="10" x="790" y="6736.6953"/><rect fill="#FFFFFF" height="853.4688" style="stroke:#181818;stroke-width:1.0;" width="10" x="1594" y="1427.0313"/><rect fill="#FFFFFF" height="936.8984" style="stroke:#181818;stroke-width:1.0;" width="10" x="1594" y="3990.4609"/><rect fill="#FFFFFF" height="168.4609" style="stroke:#181818;stroke-width:1.0;" width="10" x="1599" y="4729.8984"/><rect fill="#FFFFFF" height="175.4609" style="stroke:#181818;stroke-width:1.0;" width="10" x="1594" y="6407.9922"/><rect fill="#FFFFFF" height="235.1641" style="stroke:#181818;stroke-width:1.0;" width="10" x="1594" y="7183.6719"/><rect fill="#FFFFFF" height="120.0547" style="stroke:#181818;stroke-width:1.0;" width="10" x="1921" y="380.2109"/><rect fill="#FFFFFF" height="193.4063" style="stroke:#181818;stroke-width:1.0;" width="10" x="1921" y="2448.6094"/><rect fill="#FFFFFF" height="136.4063" style="stroke:#181818;stroke-width:1.0;" width="10" x="1921" y="5882.6094"/><polygon fill="#181818" points="360,195.1016,370,199.1016,360,203.1016,364,199.1016" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="67" x2="366" y1="199.1016" y2="199.1016"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="74" y="186.0693">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="107" x="85" y="177.8936">I'd like to pay Yaro</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="102" x="85" y="194.2451">300 BWP, please</text><rect fill="#EEEEEE" height="3" style="stroke:#EEEEEE;stroke-width:1.0;" width="2320" x="0" y="228.2773"/><line style="stroke:#000000;stroke-width:1.0;" x1="0" x2="2320" y1="228.2773" y2="228.2773"/><line style="stroke:#000000;stroke-width:1.0;" x1="0" x2="2320" y1="231.2773" y2="231.2773"/><rect fill="#EEEEEE" height="24.3516" style="stroke:#000000;stroke-width:2.0;" width="122" x="1099" y="217.1016"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="104" x="1105" y="234.5967">Discovery Phase</text><line style="stroke:#181818;stroke-width:1.0;" x1="788" x2="778" y1="290.1563" y2="286.1563"/><line style="stroke:#181818;stroke-width:1.0;" x1="788" x2="778" y1="290.1563" y2="294.1563"/><line style="stroke:#181818;stroke-width:1.0;" x1="382" x2="789" y1="290.1563" y2="290.1563"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="389" y="277.124">2</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="245" x="400" y="268.9482">I want to send to MSISDN 2551234567890</text><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="227" x="400" y="285.2998">GET /parties/MSISDN/2551234567890</text><line style="stroke:#181818;stroke-width:1.0;" x1="800" x2="842" y1="336.8594" y2="336.8594"/><line style="stroke:#181818;stroke-width:1.0;" x1="842" x2="842" y1="336.8594" y2="349.8594"/><line style="stroke:#181818;stroke-width:1.0;" x1="801" x2="842" y1="349.8594" y2="349.8594"/><polygon fill="#181818" points="811,345.8594,801,349.8594,811,353.8594,807,349.8594" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="807" y="323.8271">3</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="217" x="818" y="315.6514">Who owns MSISDN 2551234567890?</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="83" x="818" y="332.0029">It's PayeeFSP</text><line style="stroke:#181818;stroke-width:1.0;" x1="1919" x2="1909" y1="380.2109" y2="376.2109"/><line style="stroke:#181818;stroke-width:1.0;" x1="1919" x2="1909" y1="380.2109" y2="384.2109"/><line style="stroke:#181818;stroke-width:1.0;" x1="800" x2="1920" y1="380.2109" y2="380.2109"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="807" y="375.3545">4</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="224" x="818" y="375.3545">Do you own MSISDN 2551234567890?</text><line style="stroke:#181818;stroke-width:1.0;" x1="1931" x2="1973" y1="415.5625" y2="415.5625"/><line style="stroke:#181818;stroke-width:1.0;" x1="1973" x2="1973" y1="415.5625" y2="428.5625"/><line style="stroke:#181818;stroke-width:1.0;" x1="1926" x2="1973" y1="428.5625" y2="428.5625"/><polygon fill="#181818" points="1936,424.5625,1926,428.5625,1936,432.5625,1932,428.5625" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="1938" y="410.7061">5</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="336" x="1949" y="410.7061">Check Sanction list status &amp; trigger a refresh of the status</text><line style="stroke:#181818;stroke-width:1.0;" x1="801" x2="811" y1="470.2656" y2="466.2656"/><line style="stroke:#181818;stroke-width:1.0;" x1="801" x2="811" y1="470.2656" y2="474.2656"/><line style="stroke:#181818;stroke-width:1.0;" x1="800" x2="1920" y1="470.2656" y2="470.2656"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="817" y="457.2334">6</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="212" x="828" y="449.0576">Yes, it's Yaro. He can receive in TZS</text><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="227" x="828" y="465.4092">PUT /parties/MSISDN/2551234567890</text><path d="M1809,513.2656 L1809,539.2656 L2043,539.2656 L2043,523.2656 L2033,513.2656 L1809,513.2656 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M2033,513.2656 L2033,523.2656 L2043,523.2656 L2033,513.2656 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="213" x="1815" y="531.7607">Payee Info with Encrypted KYC Data</text><line style="stroke:#181818;stroke-width:1.0;" x1="378" x2="388" y1="583.3203" y2="579.3203"/><line style="stroke:#181818;stroke-width:1.0;" x1="378" x2="388" y1="583.3203" y2="587.3203"/><line style="stroke:#181818;stroke-width:1.0;" x1="377" x2="794" y1="583.3203" y2="583.3203"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="394" y="570.2881">7</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="212" x="405" y="562.1123">Yes, it's Yaro. He can receive in TZS</text><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="227" x="405" y="578.4639">PUT /parties/MSISDN/2551234567890</text><polygon fill="#181818" points="78,626.0234,68,630.0234,78,634.0234,74,630.0234" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="72" x2="376" y1="630.0234" y2="630.0234"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="84" y="616.9912">8</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="271" x="95" y="608.8154">Hi, $senderName: The number belongs to Yaro</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="212" x="95" y="625.167">Let me know if you want to go ahead</text><polygon fill="#181818" points="365,656.375,375,660.375,365,664.375,369,660.375" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="67" x2="371" y1="660.375" y2="660.375"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="74" y="655.5186">9</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="238" x="85" y="655.5186">Payer has accepted the party information</text><rect fill="#EEEEEE" height="3" style="stroke:#EEEEEE;stroke-width:1.0;" width="2320" x="0" y="689.5508"/><line style="stroke:#000000;stroke-width:1.0;" x1="0" x2="2320" y1="689.5508" y2="689.5508"/><line style="stroke:#000000;stroke-width:1.0;" x1="0" x2="2320" y1="692.5508" y2="692.5508"/><rect fill="#EEEEEE" height="24.3516" style="stroke:#000000;stroke-width:2.0;" width="148" x="1086" y="678.375"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="130" x="1092" y="695.8701">Currency conversion</text><line style="stroke:#181818;stroke-width:1.0;" x1="377" x2="424" y1="746.4297" y2="746.4297"/><line style="stroke:#181818;stroke-width:1.0;" x1="424" x2="424" y1="746.4297" y2="759.4297"/><line style="stroke:#181818;stroke-width:1.0;" x1="383" x2="424" y1="759.4297" y2="759.4297"/><polygon fill="#181818" points="393,755.4297,383,759.4297,393,763.4297,389,759.4297" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="389" y="733.3975">10</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="191" x="407" y="725.2217">Hmmm. I can only send in BWP.</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="227" x="407" y="741.5732">I need to get some currency conversion</text><line style="stroke:#181818;stroke-width:1.0;" x1="788" x2="778" y1="811.1328" y2="807.1328"/><line style="stroke:#181818;stroke-width:1.0;" x1="788" x2="778" y1="811.1328" y2="815.1328"/><line style="stroke:#181818;stroke-width:1.0;" x1="382" x2="789" y1="811.1328" y2="811.1328"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="389" y="798.1006">11</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="186" x="407" y="789.9248">What FXPs do you know about?</text><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="115" x="407" y="806.2764">GET /services/FXP</text><line style="stroke:#181818;stroke-width:1.0;" x1="378" x2="388" y1="841.4844" y2="837.4844"/><line style="stroke:#181818;stroke-width:1.0;" x1="378" x2="388" y1="841.4844" y2="845.4844"/><line style="stroke:#181818;stroke-width:1.0;" x1="377" x2="794" y1="841.4844" y2="841.4844"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="394" y="836.6279">12</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="208" x="412" y="836.6279">Here are the available FXPs:FDH FX</text><path d="M661,854.4844 L661,962.4844 L790,962.4844 L790,864.4844 L780,854.4844 L661,854.4844 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M780,854.4844 L780,864.4844 L790,864.4844 L780,854.4844 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="108" x="667" y="872.9795">PUT /services/FXP</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="667" y="889.3311">{</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="73" x="683" y="905.6826">"providers": [</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="58" x="699" y="922.0342">"FDH_FX"</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="683" y="938.3857">]</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="667" y="954.7373">}</text><line style="stroke:#181818;stroke-width:1.0;" x1="377" x2="424" y1="984.9453" y2="984.9453"/><line style="stroke:#181818;stroke-width:1.0;" x1="424" x2="424" y1="984.9453" y2="997.9453"/><line style="stroke:#181818;stroke-width:1.0;" x1="383" x2="424" y1="997.9453" y2="997.9453"/><polygon fill="#181818" points="393,993.9453,383,997.9453,393,1001.9453,389,997.9453" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="389" y="980.0889">13</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="234" x="407" y="980.0889">I'll ask FDH FX to perform my conversion</text><line style="stroke:#181818;stroke-width:1.0;" x1="788" x2="778" y1="1049.6484" y2="1045.6484"/><line style="stroke:#181818;stroke-width:1.0;" x1="788" x2="778" y1="1049.6484" y2="1053.6484"/><line style="stroke:#181818;stroke-width:1.0;" x1="382" x2="789" y1="1049.6484" y2="1049.6484"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="389" y="1036.6162">14</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="228" x="407" y="1028.4404">Here is the initial version of the transfer.</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="261" x="407" y="1044.792">Please quote me for the currency conversion.</text><path d="M387,1062.6484 L387,1366.6484 L803,1366.6484 L803,1072.6484 L793,1062.6484 L387,1062.6484 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M793,1062.6484 L793,1072.6484 L803,1072.6484 L793,1062.6484 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="90" x="393" y="1081.1436">post /fxQuotes</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="393" y="1097.4951">{</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="379" x="409" y="1113.8467">"conversionRequestId": "828cc75f-1654-415e-8fcd-df76cc9329b9",</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="119" x="409" y="1130.1982">"conversionTerms": {</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="327" x="425" y="1146.5498">"conversionId": "581f68ef-b54f-416f-9161-ac34e889a84b",</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="162" x="425" y="1162.9014">"initiatingFsp": "PayerFSP",</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="176" x="425" y="1179.2529">"counterPartyFsp": "FDH_FX",</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="139" x="425" y="1195.6045">"amountType": "SEND",</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="106" x="425" y="1211.9561">"sourceAmount": {</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="113" x="441" y="1228.3076">"currency": "BWP",</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="92" x="441" y="1244.6592">"amount": "300"</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="8" x="425" y="1261.0107">},</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="100" x="425" y="1277.3623">"targetAmount": {</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="101" x="441" y="1293.7139">"currency": "TZS"</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="8" x="425" y="1310.0654">},</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="270" x="425" y="1326.417">"expiration": "2021-08-25T14:17:09.663+01:00"</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="409" y="1342.7686">}</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="393" y="1359.1201">}</text><line style="stroke:#181818;stroke-width:1.0;" x1="1592" x2="1582" y1="1427.0313" y2="1423.0313"/><line style="stroke:#181818;stroke-width:1.0;" x1="1592" x2="1582" y1="1427.0313" y2="1431.0313"/><line style="stroke:#181818;stroke-width:1.0;" x1="800" x2="1593" y1="1427.0313" y2="1427.0313"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="807" y="1405.8232">15</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="228" x="825" y="1389.4717">Here is the initial version of the transfer.</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="261" x="825" y="1405.8232">Please quote me for the currency conversion.</text><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="94" x="825" y="1422.1748">POST /fxQuote</text><path d="M1431,1470.0313 L1431,1512.0313 L1767,1512.0313 L1767,1480.0313 L1757,1470.0313 L1431,1470.0313 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M1757,1470.0313 L1757,1480.0313 L1767,1480.0313 L1757,1470.0313 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="315" x="1437" y="1488.5264">I will add a 33 BWP fee for undertaking the conversion.</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="302" x="1437" y="1504.8779">Now I'll set an expiry time, sign the quotation object,</text><path d="M1380,1522.7344 L1380,1679.7344 L1817,1679.7344 L1817,1532.7344 L1807,1522.7344 L1380,1522.7344 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M1807,1522.7344 L1807,1532.7344 L1817,1532.7344 L1807,1522.7344 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="190" x="1386" y="1541.2295">Now I'll sign the quotation object,</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="394" x="1386" y="1557.5811">create an ILP prepare packet and return it in the intermediary object.</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="1386" y="1573.9326"> </text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="416" x="1386" y="1590.2842">NOTE: the ILP prepare packet contains the following items, all encoded:</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="303" x="1386" y="1606.6357">- The amount being sent (i.e. in the source currency)</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="92" x="1386" y="1622.9873">- An expiry time</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="85" x="1386" y="1639.3389">- The condition</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="129" x="1386" y="1655.6904">- The name of the FXP</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="214" x="1386" y="1672.042">- The content of the conversion terms</text><path d="M1154,1689.8984 L1154,2222.8984 L1589,2222.8984 L1589,1699.8984 L1579,1689.8984 L1154,1689.8984 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M1579,1689.8984 L1579,1699.8984 L1589,1699.8984 L1579,1689.8984 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="329" x="1160" y="1708.3936">PUT /fxQuotes/828cc75f-1654-415e-8fcd-df76cc9329b9</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="1160" y="1724.7451">{</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="398" x="1176" y="1741.0967">"condition": "GRzLaTP7DJ9t4P-a_BA0WA9wzzlsugf00-Tn6kESAfM",</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="119" x="1176" y="1757.4482">"conversionTerms": {</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="327" x="1192" y="1773.7998">"conversionId": "581f68ef-b54f-416f-9161-ac34e889a84b",</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="162" x="1192" y="1790.1514">"initiatingFsp": "PayerFSP",</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="176" x="1192" y="1806.5029">"counterPartyFsp": "FDH_FX",</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="139" x="1192" y="1822.8545">"amountType": "SEND",</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="106" x="1192" y="1839.2061">"sourceAmount": {</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="113" x="1208" y="1855.5576">"currency": "BWP",</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="92" x="1208" y="1871.9092">"amount": "300"</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="8" x="1192" y="1888.2607">},</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="100" x="1192" y="1904.6123">"targetAmount": {</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="105" x="1208" y="1920.9639">"currency": "TZS",</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="106" x="1208" y="1937.3154">"amount": "48000"</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="8" x="1192" y="1953.667">},</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="270" x="1192" y="1970.0186">"expiration": "2021-08-25T14:17:09.663+01:00"</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="68" x="1192" y="1986.3701">"charges": [</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="1208" y="2002.7217">{</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="131" x="1224" y="2019.0732">"chargeType": "string",</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="106" x="1224" y="2035.4248">"sourceAmount": {</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="113" x="1240" y="2051.7764">"currency": "BWP",</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="85" x="1240" y="2068.1279">"amount": "33"</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="8" x="1224" y="2084.4795">},</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="100" x="1224" y="2100.8311">"targetAmount": {</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="105" x="1240" y="2117.1826">"currency": "TZS",</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="99" x="1240" y="2133.5342">"amount": "6000"</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="1224" y="2149.8857">}</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="1208" y="2166.2373">}</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="1192" y="2182.5889">]</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="1176" y="2198.9404">}</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="1160" y="2215.292">}</text><line style="stroke:#181818;stroke-width:1.0;" x1="801" x2="811" y1="2250.5" y2="2246.5"/><line style="stroke:#181818;stroke-width:1.0;" x1="801" x2="811" y1="2250.5" y2="2254.5"/><line style="stroke:#181818;stroke-width:1.0;" x1="800" x2="1593" y1="2250.5" y2="2250.5"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="817" y="2245.6436">16</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="204" x="835" y="2245.6436">Here's the signed conversion object</text><line style="stroke:#181818;stroke-width:1.0;" x1="383" x2="393" y1="2327.2031" y2="2323.2031"/><line style="stroke:#181818;stroke-width:1.0;" x1="383" x2="393" y1="2327.2031" y2="2331.2031"/><line style="stroke:#181818;stroke-width:1.0;" x1="382" x2="794" y1="2327.2031" y2="2327.2031"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="399" y="2314.1709">17</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="204" x="417" y="2305.9951">Here's the signed conversion object</text><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="329" x="417" y="2322.3467">PUT /fxQuotes/828cc75f-1654-415e-8fcd-df76cc9329b9</text><rect fill="#EEEEEE" height="3" style="stroke:#EEEEEE;stroke-width:1.0;" width="2320" x="0" y="2356.3789"/><line style="stroke:#000000;stroke-width:1.0;" x1="0" x2="2320" y1="2356.3789" y2="2356.3789"/><line style="stroke:#000000;stroke-width:1.0;" x1="0" x2="2320" y1="2359.3789" y2="2359.3789"/><rect fill="#EEEEEE" height="24.3516" style="stroke:#000000;stroke-width:2.0;" width="131" x="1094.5" y="2345.2031"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="113" x="1100.5" y="2362.6982">Agreement Phase</text><line style="stroke:#181818;stroke-width:1.0;" x1="788" x2="778" y1="2418.2578" y2="2414.2578"/><line style="stroke:#181818;stroke-width:1.0;" x1="788" x2="778" y1="2418.2578" y2="2422.2578"/><line style="stroke:#181818;stroke-width:1.0;" x1="382" x2="789" y1="2418.2578" y2="2418.2578"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="389" y="2405.2256">18</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="298" x="407" y="2397.0498">Please quote for a transfer which sends 48000 TZS.</text><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="86" x="407" y="2413.4014">POST /quotes</text><line style="stroke:#181818;stroke-width:1.0;" x1="1919" x2="1909" y1="2448.6094" y2="2444.6094"/><line style="stroke:#181818;stroke-width:1.0;" x1="1919" x2="1909" y1="2448.6094" y2="2452.6094"/><line style="stroke:#181818;stroke-width:1.0;" x1="800" x2="1920" y1="2448.6094" y2="2448.6094"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="807" y="2443.7529">19</text><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="86" x="825" y="2443.7529">POST /quotes</text><line style="stroke:#181818;stroke-width:1.0;" x1="1931" x2="1973" y1="2525.3125" y2="2525.3125"/><line style="stroke:#181818;stroke-width:1.0;" x1="1973" x2="1973" y1="2525.3125" y2="2538.3125"/><line style="stroke:#181818;stroke-width:1.0;" x1="1932" x2="1973" y1="2538.3125" y2="2538.3125"/><polygon fill="#181818" points="1942,2534.3125,1932,2538.3125,1942,2542.3125,1938,2538.3125" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="1938" y="2512.2803">20</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="219" x="1956" y="2504.1045">OK, so I will charge 4000 TZS for this.</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="192" x="1956" y="2520.4561">Now I create terms of the transfer</text><line style="stroke:#181818;stroke-width:1.0;" x1="1931" x2="1973" y1="2568.6641" y2="2568.6641"/><line style="stroke:#181818;stroke-width:1.0;" x1="1973" x2="1973" y1="2568.6641" y2="2581.6641"/><line style="stroke:#181818;stroke-width:1.0;" x1="1932" x2="1973" y1="2581.6641" y2="2581.6641"/><polygon fill="#181818" points="1942,2577.6641,1932,2581.6641,1942,2585.6641,1938,2581.6641" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="1938" y="2563.8076">21</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="211" x="1956" y="2563.8076">Now I will sign the transaction object</text><line style="stroke:#181818;stroke-width:1.0;" x1="801" x2="811" y1="2612.0156" y2="2608.0156"/><line style="stroke:#181818;stroke-width:1.0;" x1="801" x2="811" y1="2612.0156" y2="2616.0156"/><line style="stroke:#181818;stroke-width:1.0;" x1="800" x2="1920" y1="2612.0156" y2="2612.0156"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="817" y="2607.1592">22</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="136" x="835" y="2607.1592">Here's the signed quote</text><path d="M1359,2655.0156 L1359,3024.0156 L1921,3024.0156 L1921,2665.0156 L1911,2655.0156 L1359,2655.0156 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M1911,2655.0156 L1911,2665.0156 L1921,2665.0156 L1911,2655.0156 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="318" x="1365" y="2673.5107">put /quotes/382987a8-75ce-4037-b500-c475e08c1727</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="1365" y="2689.8623"> </text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="1365" y="2706.2139">{</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="110" x="1381" y="2722.5654">"transferAmount": {</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="105" x="1397" y="2738.917">"currency": "TZS",</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="106" x="1397" y="2755.2686">"amount": "48000"</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="8" x="1381" y="2771.6201">},</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="147" x="1381" y="2787.9717">"payeeReceiveAmount": {</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="105" x="1397" y="2804.3232">"currency": "TZS",</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="106" x="1397" y="2820.6748">"amount": "44000"</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="8" x="1381" y="2837.0264">},</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="101" x="1381" y="2853.3779">"payeeFspFee": {</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="105" x="1397" y="2869.7295">"currency": "TZS",</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="99" x="1397" y="2886.0811">"amount": "4000"</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="8" x="1381" y="2902.4326">},</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="223" x="1381" y="2918.7842">"expiration": "$payeeQuoteExpiration",</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="77" x="1381" y="2935.1357">"ilpPacket": "</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="509" x="1397" y="2951.4873">&lt;This is encoded transaction object. It contains data from quote request and response.&gt;</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="9" x="1381" y="2967.8389">",</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="390" x="1381" y="2984.1904">"condition": "HOr22-H3AfTDHrSkPjJtVPRdKouuMkDXTR4ejlQa8Ks"</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="1365" y="3000.542">}</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="1365" y="3016.8936"> </text><line style="stroke:#181818;stroke-width:1.0;" x1="378" x2="388" y1="3068.4531" y2="3064.4531"/><line style="stroke:#181818;stroke-width:1.0;" x1="378" x2="388" y1="3068.4531" y2="3072.4531"/><line style="stroke:#181818;stroke-width:1.0;" x1="377" x2="794" y1="3068.4531" y2="3068.4531"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="394" y="3055.4209">23</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="136" x="412" y="3047.2451">Here's the signed quote</text><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="324" x="412" y="3063.5967">PUT /quotes/382987a8-75ce-4037-b500-c475e08c1727</text><line style="stroke:#181818;stroke-width:1.0;" x1="377" x2="419" y1="3098.8047" y2="3098.8047"/><line style="stroke:#181818;stroke-width:1.0;" x1="419" x2="419" y1="3098.8047" y2="3111.8047"/><line style="stroke:#181818;stroke-width:1.0;" x1="378" x2="419" y1="3111.8047" y2="3111.8047"/><polygon fill="#181818" points="388,3107.8047,378,3111.8047,388,3115.8047,384,3111.8047" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="384" y="3093.9482">24</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="356" x="402" y="3093.9482">OK, I can see that there are going to be 4000 TZS in charges.</text><rect fill="#EEEEEE" height="3" style="stroke:#EEEEEE;stroke-width:1.0;" width="2320" x="0" y="3140.9805"/><line style="stroke:#000000;stroke-width:1.0;" x1="0" x2="2320" y1="3140.9805" y2="3140.9805"/><line style="stroke:#000000;stroke-width:1.0;" x1="0" x2="2320" y1="3143.9805" y2="3143.9805"/><rect fill="#EEEEEE" height="24.3516" style="stroke:#000000;stroke-width:2.0;" width="150" x="1085" y="3129.8047"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="132" x="1091" y="3147.2998">Sender Confirmation</text><polygon fill="#181818" points="78,3247.9141,68,3251.9141,78,3255.9141,74,3251.9141" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="72" x2="376" y1="3251.9141" y2="3251.9141"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="84" y="3214.3545">25</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="227" x="102" y="3181.6514">Hi, $senderName: I can do the transfer.</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="234" x="102" y="3198.0029">It'll cost you 55 BWP(10000 TZS) in fees</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="118" x="102" y="3214.3545">and Yaro will receive</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="66" x="102" y="3230.7061">44000 TZS.</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="212" x="102" y="3247.0576">Let me know if you want to go ahead</text><polygon fill="#181818" points="365,3278.2656,375,3282.2656,365,3286.2656,369,3282.2656" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="67" x2="371" y1="3282.2656" y2="3282.2656"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="74" y="3277.4092">26</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="165" x="92" y="3277.4092">Great! Yes please, go ahead</text><line style="stroke:#181818;stroke-width:1.0;" x1="377" x2="424" y1="3307.6172" y2="3307.6172"/><line style="stroke:#181818;stroke-width:1.0;" x1="424" x2="424" y1="3307.6172" y2="3320.6172"/><line style="stroke:#181818;stroke-width:1.0;" x1="383" x2="424" y1="3320.6172" y2="3320.6172"/><polygon fill="#181818" points="393,3316.6172,383,3320.6172,393,3324.6172,389,3320.6172" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="389" y="3302.7607">27</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="267" x="407" y="3302.7607">Payer has accepted the terms please proceed</text><rect fill="#EEEEEE" height="3" style="stroke:#EEEEEE;stroke-width:1.0;" width="2320" x="0" y="3354.793"/><line style="stroke:#000000;stroke-width:1.0;" x1="0" x2="2320" y1="3354.793" y2="3354.793"/><line style="stroke:#000000;stroke-width:1.0;" x1="0" x2="2320" y1="3357.793" y2="3357.793"/><rect fill="#EEEEEE" height="24.3516" style="stroke:#000000;stroke-width:2.0;" width="113" x="1103.5" y="3343.6172"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="95" x="1109.5" y="3361.1123">Transfer Phase</text><line style="stroke:#181818;stroke-width:1.0;" x1="788" x2="778" y1="3400.3203" y2="3396.3203"/><line style="stroke:#181818;stroke-width:1.0;" x1="788" x2="778" y1="3400.3203" y2="3404.3203"/><line style="stroke:#181818;stroke-width:1.0;" x1="382" x2="789" y1="3400.3203" y2="3400.3203"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="389" y="3395.4639">28</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="224" x="407" y="3395.4639">Please confirm your part of the transfer</text><path d="M387,3443.3203 L387,3730.3203 L819,3730.3203 L819,3453.3203 L809,3443.3203 L387,3443.3203 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M809,3443.3203 L809,3453.3203 L819,3453.3203 L809,3443.3203 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="114" x="393" y="3461.8154">POST /fxTransfers</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="393" y="3478.167">{</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="369" x="409" y="3494.5186">"commitRequestId": "77c9d78d-c26a-4474-8b3c-99b96a814bfc",</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="395" x="409" y="3510.8701">"determiningTransferId": "d9ce59d4-3598-4396-8630-581bb0551451",</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="162" x="409" y="3527.2217">"initiatingFsp": "PayerFSP",</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="176" x="409" y="3543.5732">"counterPartyFsp": "FDH_FX",</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="139" x="409" y="3559.9248">"amountType": "SEND",</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="106" x="409" y="3576.2764">"sourceAmount": {</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="113" x="425" y="3592.6279">"currency": "BWP",</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="92" x="425" y="3608.9795">"amount": "300"</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="8" x="409" y="3625.3311">},</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="100" x="409" y="3641.6826">"targetAmount": {</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="105" x="425" y="3658.0342">"currency": "TZS",</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="106" x="425" y="3674.3857">"amount": "48000"</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="8" x="409" y="3690.7373">},</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="394" x="409" y="3707.0889">"condition": "GRzLaTP7DJ9t4P-a_BA0WA9wzzlsugf00-Tn6kESAfM"</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="393" y="3723.4404">}</text><line style="stroke:#181818;stroke-width:1.0;" x1="800" x2="842" y1="3758.6484" y2="3758.6484"/><line style="stroke:#181818;stroke-width:1.0;" x1="842" x2="842" y1="3758.6484" y2="3771.6484"/><line style="stroke:#181818;stroke-width:1.0;" x1="801" x2="842" y1="3771.6484" y2="3771.6484"/><polygon fill="#181818" points="811,3767.6484,801,3771.6484,811,3775.6484,807,3771.6484" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="807" y="3753.792">29</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="195" x="825" y="3753.792">OK, so this is an FX confirmation.</text><line style="stroke:#181818;stroke-width:1.0;" x1="800" x2="842" y1="3818.3516" y2="3818.3516"/><line style="stroke:#181818;stroke-width:1.0;" x1="842" x2="842" y1="3818.3516" y2="3831.3516"/><line style="stroke:#181818;stroke-width:1.0;" x1="801" x2="842" y1="3831.3516" y2="3831.3516"/><polygon fill="#181818" points="811,3827.3516,801,3831.3516,811,3835.3516,807,3831.3516" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="807" y="3805.3193">30</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="297" x="825" y="3797.1436">Is there any transfer with determiningTransactionId?</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="80" x="825" y="3813.4951">No, it does'nt.</text><line style="stroke:#181818;stroke-width:1.0;" x1="800" x2="842" y1="3861.7031" y2="3861.7031"/><line style="stroke:#181818;stroke-width:1.0;" x1="842" x2="842" y1="3861.7031" y2="3874.7031"/><line style="stroke:#181818;stroke-width:1.0;" x1="801" x2="842" y1="3874.7031" y2="3874.7031"/><polygon fill="#181818" points="811,3870.7031,801,3874.7031,811,3878.7031,807,3874.7031" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="807" y="3856.8467">31</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="311" x="825" y="3856.8467">Liquidity check and reserve on Payer DFSP's account</text><path d="M658,3887.7031 L658,3946.7031 L931,3946.7031 L931,3897.7031 L921,3887.7031 L658,3887.7031 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M921,3887.7031 L921,3897.7031 L931,3897.7031 L921,3887.7031 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="78" x="664" y="3906.1982">Reservations:</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="664" y="3922.5498"> </text><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="252" x="664" y="3938.9014">PayerFSP has a reservation of 300 BWP</text><line style="stroke:#181818;stroke-width:1.0;" x1="1592" x2="1582" y1="3990.4609" y2="3986.4609"/><line style="stroke:#181818;stroke-width:1.0;" x1="1592" x2="1582" y1="3990.4609" y2="3994.4609"/><line style="stroke:#181818;stroke-width:1.0;" x1="800" x2="1593" y1="3990.4609" y2="3990.4609"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="807" y="3977.4287">32</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="336" x="825" y="3969.2529">Please confirm the currency conversion part of the transfer</text><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="114" x="829" y="3985.6045">POST /fxTransfers</text><path d="M717.5,4035.4609 L778.5,4035.4609 L778.5,4043.8125 L768.5,4053.8125 L717.5,4053.8125 L717.5,4035.4609 " fill="#EEEEEE" style="stroke:#000000;stroke-width:1.5;"/><rect fill="none" height="884.8984" style="stroke:#000000;stroke-width:1.5;" width="1163.5" x="717.5" y="4035.4609"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="16" x="732.5" y="4049.9561">alt</text><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="103" x="793.5" y="4048.8799">[conversion failed]</text><line style="stroke:#181818;stroke-width:1.0;" x1="796" x2="806" y1="4076.1641" y2="4072.1641"/><line style="stroke:#181818;stroke-width:1.0;" x1="796" x2="806" y1="4076.1641" y2="4080.1641"/><line style="stroke:#181818;stroke-width:1.0;" x1="795" x2="1593" y1="4076.1641" y2="4076.1641"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="812" y="4071.3076">33</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="39" x="830" y="4071.3076">Failed.</text><path d="M1186,4089.1641 L1186,4426.1641 L1589,4426.1641 L1589,4099.1641 L1579,4089.1641 L1186,4089.1641 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M1579,4089.1641 L1579,4099.1641 L1589,4099.1641 L1579,4089.1641 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="352" x="1192" y="4107.6592">PUT /fxTransfers/77c9d78d-c26a-4474-8b3c-99b96a814bfc</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="30" x="1544" y="4107.6592">/error</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="1192" y="4124.0107">{</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="111" x="1200" y="4140.3623">"errorInformation": {</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="116" x="1208" y="4156.7139">"errorCode": "5100",</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="202" x="1208" y="4173.0654">"errorDescription": "error message"</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="1200" y="4189.417">}</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="1192" y="4205.7686">}</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="1192" y="4222.1201">(</text><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="13" x="1200" y="4222.1201">or</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="1217" y="4222.1201">)</text><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="352" x="1192" y="4238.4717">PUT /fxTransfers/77c9d78d-c26a-4474-8b3c-99b96a814bfc</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="1192" y="4254.8232">{</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="186" x="1200" y="4271.1748">"conversionState": "ABORTED",</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="99" x="1200" y="4287.5264">"extensionList": {</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="78" x="1208" y="4303.8779">"extension": [</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="1216" y="4320.2295">{</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="92" x="1224" y="4336.5811">"key": "reason",</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="132" x="1224" y="4352.9326">"value": "some reason"</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="1216" y="4369.2842">}</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="1208" y="4385.6357">]</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="1200" y="4401.9873">}</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="1192" y="4418.3389">}</text><line style="stroke:#000000;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="717.5" x2="1881" y1="4432.1953" y2="4432.1953"/><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="120" x="722.5" y="4443.6143">[conversion success]</text><line style="stroke:#181818;stroke-width:1.0;" x1="1604" x2="1646" y1="4469.3828" y2="4469.3828"/><line style="stroke:#181818;stroke-width:1.0;" x1="1646" x2="1646" y1="4469.3828" y2="4482.3828"/><line style="stroke:#181818;stroke-width:1.0;" x1="1605" x2="1646" y1="4482.3828" y2="4482.3828"/><polygon fill="#181818" points="1615,4478.3828,1605,4482.3828,1615,4486.3828,1611,4482.3828" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="1611" y="4464.5264">34</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="183" x="1629" y="4464.5264">Reserve funds for FX conversion</text><line style="stroke:#181818;stroke-width:1.0;" x1="796" x2="806" y1="4512.7344" y2="4508.7344"/><line style="stroke:#181818;stroke-width:1.0;" x1="796" x2="806" y1="4512.7344" y2="4516.7344"/><line style="stroke:#181818;stroke-width:1.0;" x1="795" x2="1593" y1="4512.7344" y2="4512.7344"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="812" y="4507.8779">35</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="179" x="830" y="4507.8779">Confirmed. Here's the fulfilment</text><path d="M1057,4525.7344 L1057,4633.7344 L1589,4633.7344 L1589,4535.7344 L1579,4525.7344 L1057,4525.7344 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M1579,4525.7344 L1579,4535.7344 L1589,4535.7344 L1579,4525.7344 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="352" x="1063" y="4544.2295">PUT /fxTransfers/77c9d78d-c26a-4474-8b3c-99b96a814bfc</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="1063" y="4560.5811">{</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="511" x="1063" y="4576.9326">"fulfilment": "188909ceb6cd5c35d5c6b394f0a9e5a0571199c332fbd013dc1e6b8a2d5fff42",</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="342" x="1063" y="4593.2842">"completedTimestamp": "2021-08-25T14:17:08.175+01:00",</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="192" x="1063" y="4609.6357">"conversionState": "RESERVED"</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="1063" y="4625.9873">}</text><line style="stroke:#181818;stroke-width:1.0;" x1="795" x2="837" y1="4661.1953" y2="4661.1953"/><line style="stroke:#181818;stroke-width:1.0;" x1="837" x2="837" y1="4661.1953" y2="4674.1953"/><line style="stroke:#181818;stroke-width:1.0;" x1="796" x2="837" y1="4674.1953" y2="4674.1953"/><polygon fill="#181818" points="806,4670.1953,796,4674.1953,806,4678.1953,802,4674.1953" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="802" y="4656.3389">36</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="249" x="820" y="4656.3389">Check fulfilment matches and cancel if not.</text><path d="M727.5,4689.1953 L788.5,4689.1953 L788.5,4697.5469 L778.5,4707.5469 L727.5,4707.5469 L727.5,4689.1953 " fill="#EEEEEE" style="stroke:#000000;stroke-width:1.5;"/><rect fill="none" height="224.1641" style="stroke:#000000;stroke-width:1.5;" width="1143.5" x="727.5" y="4689.1953"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="16" x="742.5" y="4703.6904">alt</text><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="105" x="803.5" y="4702.6143">[Conversion failed]</text><polygon fill="#181818" points="1587,4725.8984,1597,4729.8984,1587,4733.8984,1591,4729.8984" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="795" x2="1593" y1="4729.8984" y2="4729.8984"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="802" y="4725.042">37</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="136" x="820" y="4725.042">Sorry. Conversion failed</text><path d="M1403,4742.8984 L1403,4833.8984 L1794,4833.8984 L1794,4752.8984 L1784,4742.8984 L1403,4742.8984 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M1784,4742.8984 L1784,4752.8984 L1794,4752.8984 L1784,4742.8984 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="370" x="1409" y="4761.3936">PATCH /fxTransfers/77c9d78d-c26a-4474-8b3c-99b96a814bfc</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="1409" y="4777.7451">{</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="342" x="1409" y="4794.0967">"completedTimestamp": "2021-08-25T14:17:08.175+01:00",</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="182" x="1409" y="4810.4482">"conversionState": "ABORTED"</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="1409" y="4826.7998">}</text><polygon fill="#181818" points="806,4858.0078,796,4862.0078,806,4866.0078,802,4862.0078" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="800" x2="1598" y1="4862.0078" y2="4862.0078"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="812" y="4857.1514">38</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="84" x="830" y="4857.1514">Acknowledged</text><line style="stroke:#181818;stroke-width:1.0;" x1="1609" x2="1651" y1="4897.3594" y2="4897.3594"/><line style="stroke:#181818;stroke-width:1.0;" x1="1651" x2="1651" y1="4897.3594" y2="4910.3594"/><line style="stroke:#181818;stroke-width:1.0;" x1="1604" x2="1651" y1="4910.3594" y2="4910.3594"/><polygon fill="#181818" points="1614,4906.3594,1604,4910.3594,1614,4914.3594,1610,4910.3594" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="1616" y="4892.5029">39</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="225" x="1634" y="4892.5029">Remove any reservations or obligations</text><path d="M321,4934.3594 L382,4934.3594 L382,4942.7109 L372,4952.7109 L321,4952.7109 L321,4934.3594 " fill="#EEEEEE" style="stroke:#000000;stroke-width:1.5;"/><rect fill="none" height="594.0313" style="stroke:#000000;stroke-width:1.5;" width="1283" x="321" y="4934.3594"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="16" x="336" y="4948.8545">alt</text><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="105" x="397" y="4947.7783">[Conversion failed]</text><line style="stroke:#181818;stroke-width:1.0;" x1="795" x2="837" y1="4975.0625" y2="4975.0625"/><line style="stroke:#181818;stroke-width:1.0;" x1="837" x2="837" y1="4975.0625" y2="4988.0625"/><line style="stroke:#181818;stroke-width:1.0;" x1="796" x2="837" y1="4988.0625" y2="4988.0625"/><polygon fill="#181818" points="806,4984.0625,796,4988.0625,806,4992.0625,802,4988.0625" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="802" y="4970.2061">40</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="432" x="820" y="4970.2061">Abort the fxTransfer. Revert the position changes involved in this fxTransfer.</text><line style="stroke:#181818;stroke-width:1.0;" x1="795" x2="837" y1="5067.4688" y2="5067.4688"/><line style="stroke:#181818;stroke-width:1.0;" x1="837" x2="837" y1="5067.4688" y2="5080.4688"/><line style="stroke:#181818;stroke-width:1.0;" x1="796" x2="837" y1="5080.4688" y2="5080.4688"/><polygon fill="#181818" points="806,5076.4688,796,5080.4688,806,5084.4688,802,5080.4688" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="802" y="5038.085">41</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="376" x="820" y="5013.5576">Incase of payee side conversion, there will be dependent transfer.</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="501" x="820" y="5029.9092">But do not cancel that transfer as DFSP can try currency conversion with another FXP.</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="768" x="820" y="5046.2607">But make sure that while processing the fulfilment of the original transfer, it shouldn't pickup this fxTransfer as the dependent transfer.</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="259" x="820" y="5062.6123">(Maybe by removing the entry from watchlist)</text><line style="stroke:#181818;stroke-width:1.0;" x1="383" x2="393" y1="5110.8203" y2="5106.8203"/><line style="stroke:#181818;stroke-width:1.0;" x1="383" x2="393" y1="5110.8203" y2="5114.8203"/><line style="stroke:#181818;stroke-width:1.0;" x1="382" x2="794" y1="5110.8203" y2="5110.8203"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="399" y="5105.9639">42</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="136" x="417" y="5105.9639">Sorry. Conversion failed</text><path d="M591,5123.8203 L591,5460.8203 L999,5460.8203 L999,5133.8203 L989,5123.8203 L591,5123.8203 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M989,5123.8203 L989,5133.8203 L999,5133.8203 L989,5123.8203 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="387" x="597" y="5142.3154">PUT /fxTransfers/77c9d78d-c26a-4474-8b3c-99b96a814bfc/error</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="597" y="5158.667">{</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="111" x="605" y="5175.0186">"errorInformation": {</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="116" x="613" y="5191.3701">"errorCode": "5100",</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="202" x="613" y="5207.7217">"errorDescription": "error message"</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="605" y="5224.0732">}</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="597" y="5240.4248">}</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="597" y="5256.7764">(</text><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="13" x="605" y="5256.7764">or</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="622" y="5256.7764">)</text><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="352" x="597" y="5273.1279">PUT /fxTransfers/77c9d78d-c26a-4474-8b3c-99b96a814bfc</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="597" y="5289.4795">{</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="186" x="605" y="5305.8311">"conversionState": "ABORTED",</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="99" x="605" y="5322.1826">"extensionList": {</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="78" x="613" y="5338.5342">"extension": [</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="621" y="5354.8857">{</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="92" x="629" y="5371.2373">"key": "reason",</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="132" x="629" y="5387.5889">"value": "some reason"</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="621" y="5403.9404">}</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="613" y="5420.292">]</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="605" y="5436.6436">}</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="597" y="5452.9951">}</text><line style="stroke:#000000;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="321" x2="1604" y1="5466.8516" y2="5466.8516"/><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="136" x="326" y="5478.2705">[Conversion succeeded]</text><polygon fill="#181818" points="393,5516.3906,383,5520.3906,393,5524.3906,389,5520.3906" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="387" x2="794" y1="5520.3906" y2="5520.3906"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="399" y="5507.3584">43</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="291" x="417" y="5499.1826">Conversion succeeded subject to transfer success</text><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="352" x="417" y="5515.5342">PUT /fxTransfers/77c9d78d-c26a-4474-8b3c-99b96a814bfc</text><line style="stroke:#181818;stroke-width:1.0;" x1="377" x2="419" y1="5574.0938" y2="5574.0938"/><line style="stroke:#181818;stroke-width:1.0;" x1="419" x2="419" y1="5574.0938" y2="5587.0938"/><line style="stroke:#181818;stroke-width:1.0;" x1="378" x2="419" y1="5587.0938" y2="5587.0938"/><polygon fill="#181818" points="388,5583.0938,378,5587.0938,388,5591.0938,384,5587.0938" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="384" y="5561.0615">44</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="122" x="402" y="5552.8857">OK, so that's all right</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="189" x="402" y="5569.2373">Now I can send the transfer itself</text><polygon fill="#181818" points="778,5613.4453,788,5617.4453,778,5621.4453,782,5617.4453" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="377" x2="784" y1="5617.4453" y2="5617.4453"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="384" y="5612.5889">45</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="127" x="402" y="5612.5889">Please do the transfer</text><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="98" x="533" y="5612.5889">POST /transfers</text><line style="stroke:#181818;stroke-width:1.0;" x1="800" x2="842" y1="5677.7969" y2="5677.7969"/><line style="stroke:#181818;stroke-width:1.0;" x1="842" x2="842" y1="5677.7969" y2="5690.7969"/><line style="stroke:#181818;stroke-width:1.0;" x1="801" x2="842" y1="5690.7969" y2="5690.7969"/><polygon fill="#181818" points="811,5686.7969,801,5690.7969,811,5694.7969,807,5690.7969" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="807" y="5672.9404">46</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="199" x="825" y="5672.9404">Is there a dependent transfer? Yes</text><line style="stroke:#181818;stroke-width:1.0;" x1="800" x2="842" y1="5737.5" y2="5737.5"/><line style="stroke:#181818;stroke-width:1.0;" x1="842" x2="842" y1="5737.5" y2="5750.5"/><line style="stroke:#181818;stroke-width:1.0;" x1="801" x2="842" y1="5750.5" y2="5750.5"/><polygon fill="#181818" points="811,5746.5,801,5750.5,811,5754.5,807,5750.5" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="807" y="5724.4678">47</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="237" x="825" y="5716.292">Perform liquidity check and reserve funds</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="248" x="825" y="5732.6436">against creditor party to dependent transfer</text><path d="M661,5763.5 L661,5838.5 L928,5838.5 L928,5773.5 L918,5763.5 L661,5763.5 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M918,5763.5 L918,5773.5 L928,5773.5 L918,5763.5 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="78" x="667" y="5781.9951">Reservations:</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="667" y="5798.3467"> </text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="236" x="667" y="5814.6982">PayerFSP has a reservation of 300 BWP</text><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="246" x="667" y="5831.0498">FDH_FX has a reservation of 48000 TZS</text><polygon fill="#181818" points="1909,5878.6094,1919,5882.6094,1909,5886.6094,1913,5882.6094" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="800" x2="1915" y1="5882.6094" y2="5882.6094"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="807" y="5869.5771">48</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="127" x="825" y="5861.4014">Please do the transfer</text><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="98" x="825" y="5877.7529">POST /transfers</text><line style="stroke:#181818;stroke-width:1.0;" x1="1931" x2="1973" y1="5975.6641" y2="5975.6641"/><line style="stroke:#181818;stroke-width:1.0;" x1="1973" x2="1973" y1="5975.6641" y2="5988.6641"/><line style="stroke:#181818;stroke-width:1.0;" x1="1932" x2="1973" y1="5988.6641" y2="5988.6641"/><polygon fill="#181818" points="1942,5984.6641,1932,5988.6641,1942,5992.6641,1938,5988.6641" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="1938" y="5954.4561">49</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="311" x="1956" y="5938.1045">Let me check that the terms of the dependent transfer</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="213" x="1956" y="5954.4561">are the same as the ones I agreed to</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="245" x="1956" y="5970.8076">and that the fulfilment and condition match</text><polygon fill="#181818" points="2285,6015.0156,2295,6019.0156,2285,6023.0156,2289,6019.0156" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="1926" x2="2291" y1="6019.0156" y2="6019.0156"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="1933" y="6014.1592">50</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="265" x="1951" y="6014.1592">Hi Yaro's, you got inbound transfer 44000 TZS</text><path d="M10,6034.0156 L71,6034.0156 L71,6042.3672 L61,6052.3672 L10,6052.3672 L10,6034.0156 " fill="#EEEEEE" style="stroke:#000000;stroke-width:1.5;"/><rect fill="none" height="1601.6328" style="stroke:#000000;stroke-width:1.5;" width="2148" x="10" y="6034.0156"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="16" x="25" y="6048.5107">alt</text><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="86" x="86" y="6047.4346">[transfer failed]</text><line style="stroke:#181818;stroke-width:1.0;" x1="801" x2="811" y1="6074.7188" y2="6070.7188"/><line style="stroke:#181818;stroke-width:1.0;" x1="801" x2="811" y1="6074.7188" y2="6078.7188"/><line style="stroke:#181818;stroke-width:1.0;" x1="800" x2="1925" y1="6074.7188" y2="6074.7188"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="817" y="6069.8623">51</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="110" x="835" y="6069.8623">Transfer is rejected</text><path d="M1732,6087.7188 L1732,6276.7188 L2119,6276.7188 L2119,6097.7188 L2109,6087.7188 L1732,6087.7188 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M2109,6087.7188 L2109,6097.7188 L2119,6097.7188 L2109,6087.7188 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="336" x="1738" y="6106.2139">PUT /transfers/77c9d78d-c26a-4474-8b3c-99b96a814bfc</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="30" x="2074" y="6106.2139">/error</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="1738" y="6122.5654">{</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="111" x="1746" y="6138.917">"errorInformation": {</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="116" x="1754" y="6155.2686">"errorCode": "5100",</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="202" x="1754" y="6171.6201">"errorDescription": "error message"</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="1746" y="6187.9717">}</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="1738" y="6204.3232">}</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="1738" y="6220.6748">(</text><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="13" x="1746" y="6220.6748">or</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="1763" y="6220.6748">)</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="1738" y="6237.0264">{</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="173" x="1746" y="6253.3779">"transferState": "ABORETED"</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="1738" y="6269.7295">}</text><line style="stroke:#181818;stroke-width:1.0;" x1="800" x2="842" y1="6304.9375" y2="6304.9375"/><line style="stroke:#181818;stroke-width:1.0;" x1="842" x2="842" y1="6304.9375" y2="6317.9375"/><line style="stroke:#181818;stroke-width:1.0;" x1="801" x2="842" y1="6317.9375" y2="6317.9375"/><polygon fill="#181818" points="811,6313.9375,801,6317.9375,811,6321.9375,807,6317.9375" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="807" y="6300.0811">52</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="294" x="825" y="6300.0811">Revert the position changes involved in this transfer</text><line style="stroke:#181818;stroke-width:1.0;" x1="800" x2="842" y1="6348.2891" y2="6348.2891"/><line style="stroke:#181818;stroke-width:1.0;" x1="842" x2="842" y1="6348.2891" y2="6361.2891"/><line style="stroke:#181818;stroke-width:1.0;" x1="801" x2="842" y1="6361.2891" y2="6361.2891"/><polygon fill="#181818" points="811,6357.2891,801,6361.2891,811,6365.2891,807,6361.2891" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="807" y="6343.4326">53</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="721" x="825" y="6343.4326">If there are dependency fxTransfers, abort the fxTransfers as well and revert the position changes involved in those fxTransfers</text><line style="stroke:#181818;stroke-width:1.0;" x1="1592" x2="1582" y1="6407.9922" y2="6403.9922"/><line style="stroke:#181818;stroke-width:1.0;" x1="1592" x2="1582" y1="6407.9922" y2="6411.9922"/><line style="stroke:#181818;stroke-width:1.0;" x1="800" x2="1593" y1="6407.9922" y2="6407.9922"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="807" y="6394.96">54</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="158" x="825" y="6386.7842">The linked transfer is failed.</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="225" x="825" y="6403.1357">Remove any reservations or obligations</text><path d="M599,6420.9922 L599,6511.9922 L990,6511.9922 L990,6430.9922 L980,6420.9922 L599,6420.9922 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M980,6420.9922 L980,6430.9922 L990,6430.9922 L980,6420.9922 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="370" x="605" y="6439.4873">PATCH /fxTransfers/77c9d78d-c26a-4474-8b3c-99b96a814bfc</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="605" y="6455.8389">{</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="342" x="621" y="6472.1904">"completedTimestamp": "2021-08-25T14:17:08.227+01:00",</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="164" x="621" y="6488.542">"transferState": "ABORTED"</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="605" y="6504.8936">}</text><line style="stroke:#181818;stroke-width:1.0;" x1="1604" x2="1646" y1="6540.1016" y2="6540.1016"/><line style="stroke:#181818;stroke-width:1.0;" x1="1646" x2="1646" y1="6540.1016" y2="6553.1016"/><line style="stroke:#181818;stroke-width:1.0;" x1="1605" x2="1646" y1="6553.1016" y2="6553.1016"/><polygon fill="#181818" points="1615,6549.1016,1605,6553.1016,1615,6557.1016,1611,6553.1016" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="1611" y="6535.2451">55</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="34" x="1629" y="6535.2451">Oops!</text><line style="stroke:#181818;stroke-width:1.0;" x1="801" x2="811" y1="6583.4531" y2="6579.4531"/><line style="stroke:#181818;stroke-width:1.0;" x1="801" x2="811" y1="6583.4531" y2="6587.4531"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="800" x2="1598" y1="6583.4531" y2="6583.4531"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="817" y="6578.5967">56</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="67" x="835" y="6578.5967">200 Gotcha</text><line style="stroke:#181818;stroke-width:1.0;" x1="383" x2="393" y1="6630.1563" y2="6626.1563"/><line style="stroke:#181818;stroke-width:1.0;" x1="383" x2="393" y1="6630.1563" y2="6634.1563"/><line style="stroke:#181818;stroke-width:1.0;" x1="382" x2="789" y1="6630.1563" y2="6630.1563"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="399" y="6617.124">57</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="117" x="417" y="6608.9482">Transfer is complete</text><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="371" x="417" y="6625.2998">PUT /transfers/77c9d78d-c26a-4474-8b3c-99b96a814bfc/error</text><polygon fill="#181818" points="78,6686.5078,68,6690.5078,78,6694.5078,74,6690.5078" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="72" x2="376" y1="6690.5078" y2="6690.5078"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="84" y="6685.6514">58</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="122" x="102" y="6685.6514">Your transfer is failed</text><line style="stroke:#000000;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="10" x2="2158" y1="6699.5078" y2="6699.5078"/><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="103" x="15" y="6710.9268">[transfer success]</text><line style="stroke:#181818;stroke-width:1.0;" x1="801" x2="811" y1="6736.6953" y2="6732.6953"/><line style="stroke:#181818;stroke-width:1.0;" x1="801" x2="811" y1="6736.6953" y2="6740.6953"/><line style="stroke:#181818;stroke-width:1.0;" x1="800" x2="1925" y1="6736.6953" y2="6736.6953"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="817" y="6731.8389">59</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="239" x="835" y="6731.8389">Transfer is confirmed, here's the fulfilment</text><path d="M1704,6749.6953 L1704,6857.6953 L2148,6857.6953 L2148,6759.6953 L2138,6749.6953 L1704,6749.6953 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M2138,6749.6953 L2138,6759.6953 L2148,6759.6953 L2138,6749.6953 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="336" x="1710" y="6768.1904">PUT /transfers/77c9d78d-c26a-4474-8b3c-99b96a814bfc</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="1710" y="6784.542">{</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="342" x="1726" y="6800.8936">"completedTimestamp": "2021-08-25T14:17:08.227+01:00",</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="407" x="1726" y="6817.2451">"fulfilment": "mhPUT9ZAwd-BXLfeSd7-YPh46rBWRNBiTCSWjpku90s",</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="178" x="1726" y="6833.5967">"transferState": "COMMITTED"</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="1710" y="6849.9482">}</text><line style="stroke:#181818;stroke-width:1.0;" x1="800" x2="842" y1="6901.5078" y2="6901.5078"/><line style="stroke:#181818;stroke-width:1.0;" x1="842" x2="842" y1="6901.5078" y2="6914.5078"/><line style="stroke:#181818;stroke-width:1.0;" x1="801" x2="842" y1="6914.5078" y2="6914.5078"/><polygon fill="#181818" points="811,6910.5078,801,6914.5078,811,6918.5078,807,6914.5078" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="807" y="6888.4756">60</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="172" x="825" y="6880.2998">Is there a dependent transfer?</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="78" x="825" y="6896.6514">Yes, there is.</text><line style="stroke:#181818;stroke-width:1.0;" x1="800" x2="842" y1="6961.2109" y2="6961.2109"/><line style="stroke:#181818;stroke-width:1.0;" x1="842" x2="842" y1="6961.2109" y2="6974.2109"/><line style="stroke:#181818;stroke-width:1.0;" x1="801" x2="842" y1="6974.2109" y2="6974.2109"/><polygon fill="#181818" points="811,6970.2109,801,6974.2109,811,6978.2109,807,6974.2109" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="807" y="6948.1787">61</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="341" x="825" y="6940.0029">Is this dependency against the debtor party to the transfer?</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="56" x="825" y="6956.3545">Yes, it is.</text><line style="stroke:#181818;stroke-width:1.0;" x1="800" x2="842" y1="7004.5625" y2="7004.5625"/><line style="stroke:#181818;stroke-width:1.0;" x1="842" x2="842" y1="7004.5625" y2="7017.5625"/><line style="stroke:#181818;stroke-width:1.0;" x1="801" x2="842" y1="7017.5625" y2="7017.5625"/><polygon fill="#181818" points="811,7013.5625,801,7017.5625,811,7021.5625,807,7017.5625" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="807" y="6999.7061">62</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="520" x="825" y="6999.7061">Create an obligation from the debtor party to the party named in the dependency (the FXP)</text><line style="stroke:#181818;stroke-width:1.0;" x1="800" x2="842" y1="7064.2656" y2="7064.2656"/><line style="stroke:#181818;stroke-width:1.0;" x1="842" x2="842" y1="7064.2656" y2="7077.2656"/><line style="stroke:#181818;stroke-width:1.0;" x1="801" x2="842" y1="7077.2656" y2="7077.2656"/><polygon fill="#181818" points="811,7073.2656,801,7077.2656,811,7081.2656,807,7077.2656" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="807" y="7051.2334">63</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="420" x="825" y="7043.0576">Is the transfer denominated in the currency of the payee receive amount?</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="56" x="825" y="7059.4092">Yes, it is.</text><line style="stroke:#181818;stroke-width:1.0;" x1="800" x2="842" y1="7123.9688" y2="7123.9688"/><line style="stroke:#181818;stroke-width:1.0;" x1="842" x2="842" y1="7123.9688" y2="7136.9688"/><line style="stroke:#181818;stroke-width:1.0;" x1="801" x2="842" y1="7136.9688" y2="7136.9688"/><polygon fill="#181818" points="811,7132.9688,801,7136.9688,811,7140.9688,807,7136.9688" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="807" y="7110.9365">64</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="352" x="825" y="7102.7607">Create an obligation from the party named in the dependency</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="200" x="825" y="7119.1123">to the creditor party for the transfer</text><line style="stroke:#181818;stroke-width:1.0;" x1="1592" x2="1582" y1="7183.6719" y2="7179.6719"/><line style="stroke:#181818;stroke-width:1.0;" x1="1592" x2="1582" y1="7183.6719" y2="7187.6719"/><line style="stroke:#181818;stroke-width:1.0;" x1="800" x2="1593" y1="7183.6719" y2="7183.6719"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="807" y="7170.6396">65</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="139" x="825" y="7162.4639">The transfer succeeded.</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="180" x="825" y="7178.8154">You can clear it in your ledgers</text><path d="M573,7196.6719 L573,7304.6719 L1017,7304.6719 L1017,7206.6719 L1007,7196.6719 L573,7196.6719 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M1007,7196.6719 L1007,7206.6719 L1017,7206.6719 L1007,7196.6719 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="370" x="579" y="7215.167">PATCH /fxTransfers/77c9d78d-c26a-4474-8b3c-99b96a814bfc</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="579" y="7231.5186">{</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="342" x="595" y="7247.8701">"completedTimestamp": "2021-08-25T14:17:08.227+01:00",</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="407" x="595" y="7264.2217">"fulfilment": "mhPUT9ZAwd-BXLfeSd7-YPh46rBWRNBiTCSWjpku90s",</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="178" x="595" y="7280.5732">"transferState": "COMMITTED"</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="579" y="7296.9248">}</text><line style="stroke:#181818;stroke-width:1.0;" x1="1604" x2="1646" y1="7332.1328" y2="7332.1328"/><line style="stroke:#181818;stroke-width:1.0;" x1="1646" x2="1646" y1="7332.1328" y2="7345.1328"/><line style="stroke:#181818;stroke-width:1.0;" x1="1605" x2="1646" y1="7345.1328" y2="7345.1328"/><polygon fill="#181818" points="1615,7341.1328,1605,7345.1328,1615,7349.1328,1611,7345.1328" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="1611" y="7327.2764">66</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="285" x="1629" y="7327.2764">Let's just check: does this match the stuff I sent?</text><line style="stroke:#181818;stroke-width:1.0;" x1="1604" x2="1646" y1="7375.4844" y2="7375.4844"/><line style="stroke:#181818;stroke-width:1.0;" x1="1646" x2="1646" y1="7375.4844" y2="7388.4844"/><line style="stroke:#181818;stroke-width:1.0;" x1="1605" x2="1646" y1="7388.4844" y2="7388.4844"/><polygon fill="#181818" points="1615,7384.4844,1605,7388.4844,1615,7392.4844,1611,7388.4844" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="1611" y="7370.6279">67</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="217" x="1629" y="7370.6279">It does. Great. I'll clear the conversion</text><line style="stroke:#181818;stroke-width:1.0;" x1="801" x2="811" y1="7418.8359" y2="7414.8359"/><line style="stroke:#181818;stroke-width:1.0;" x1="801" x2="811" y1="7418.8359" y2="7422.8359"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="800" x2="1598" y1="7418.8359" y2="7418.8359"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="817" y="7413.9795">68</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="67" x="835" y="7413.9795">200 Gotcha</text><path d="M677,7431.8359 L677,7522.8359 L913,7522.8359 L913,7441.8359 L903,7431.8359 L677,7431.8359 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M903,7431.8359 L903,7441.8359 L913,7441.8359 L903,7431.8359 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="99" x="683" y="7450.3311">Ledger positions:</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="202" x="683" y="7466.6826">PayerFSP has a debit of 300 BWP</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="194" x="683" y="7483.0342">FDH_FX has a credit of 300 BWP</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="196" x="683" y="7499.3857">FDH_FX has a debit of 48000 TZS</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="215" x="683" y="7515.7373">PayeeFSP has a credit of 48000 TZS</text><line style="stroke:#181818;stroke-width:1.0;" x1="383" x2="393" y1="7567.2969" y2="7563.2969"/><line style="stroke:#181818;stroke-width:1.0;" x1="383" x2="393" y1="7567.2969" y2="7571.2969"/><line style="stroke:#181818;stroke-width:1.0;" x1="382" x2="789" y1="7567.2969" y2="7567.2969"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="399" y="7554.2646">69</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="117" x="417" y="7546.0889">Transfer is complete</text><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="336" x="417" y="7562.4404">PUT /transfers/77c9d78d-c26a-4474-8b3c-99b96a814bfc</text><polygon fill="#181818" points="78,7623.6484,68,7627.6484,78,7631.6484,74,7627.6484" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="72" x2="376" y1="7627.6484" y2="7627.6484"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="84" y="7622.792">70</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="154" x="102" y="7622.792">Your transfer is successful</text><!--MD5=[8e360274d43e3d3cbe4bbe750c7dc607]
+@startuml
+
+!$simplified = true
+!$hideSwitchDetail = false
+!$advancedCoreConnectorFlow = true
+!$senderLastName = ""
+!$senderDOB = "1966-06-16"
+!$receiverName = "Yaro"
+!$receiverFirstName = "Yaro"
+!$receiverMiddleName = ""
+!$receiverLastName = ""
+!$receiverDOB = "1966-06-16"
+!$payerCurrency = "BWP"
+!$payeeCurrency = "TZS"
+!$payerFSPID = "PayerFSP"
+!$payeeFSPID = "PayeeFSP"
+!$fxpID = "FDH_FX"
+!$payerMSISDN = "26787654321"
+!$payeeMSISDN = "2551234567890"
+!$payeeReceiveAmount = "44000"
+!$payerSendAmount = "300"
+!$payeeFee = "4000"
+!$targetAmount = "48000"
+!$fxpChargesSource = "33"
+!$fxpChargesTarget = "6000"
+!$fxpSourceAmount = "300"
+!$fxpTargetAmount = "48000"
+!$totalChargesSourceCurrency = "55"
+!$totalChargesTargetCurrency = "10000"
+!$conversionRequestId = "828cc75f-1654-415e-8fcd-df76cc9329b9"
+!$conversionId = "581f68ef-b54f-416f-9161-ac34e889a84b"
+!$homeTransactionId = "string"
+!$quoteId = "382987a8-75ce-4037-b500-c475e08c1727"
+!$transactionId = "d9ce59d4-3598-4396-8630-581bb0551451"
+!$quotePayerExpiration = "2021-08-25T14:17:09.663+01:00"
+!$quotePayeeExpiration = "2021-08-25T14:17:09.663+01:00"
+!$commitRequestId = "77c9d78d-c26a-4474-8b3c-99b96a814bfc"
+!$determiningTransferId = "d9ce59d4-3598-4396-8630-581bb0551451"
+!$transferId = "d9ce59d4-3598-4396-8630-581bb0551451"
+!$fxCondition = "GRzLaTP7DJ9t4P-a_BA0WA9wzzlsugf00-Tn6kESAfM"
+!$condition = "HOr22-H3AfTDHrSkPjJtVPRdKouuMkDXTR4ejlQa8Ks"
+
+title Remittance Transfer using Mojaloop FX APIs POC\nPayer DFSP requests conversion with SEND amount
+actor "$senderName" as A1
+box "Payer DFSP" #LightBlue  
+  participant "Payer DFSP" as D1
+end box
+
+participant "Mojaloop Switch" as S1
+
+'box "Discovery Service" #LightYellow
+'  participant "ALS Oracle" as ALS
+'end box
+
+box "FX provider"  
+  participant "FXP\nConnector" as FXP
+end box
+
+box "Payee DFSP" #LightBlue   
+  participant "Payee\nMojaloop\nConnector" as D2
+end box
+
+actor "$receiverName" as A2
+autonumber
+
+A1->D1:I'd like to pay $receiverName\n$payerSendAmount $payerCurrency, please
+
+== Discovery Phase ==
+activate D1
+D1->>S1:I want to send to MSISDN $payeeMSISDN\n**GET /parties/MSISDN/$payeeMSISDN**
+activate S1
+!if ($simplified != true)
+S1- ->>D1:202 I'll get back to you
+!endif
+
+S1->S1:Who owns MSISDN $payeeMSISDN?\nIt's $payeeFSPID
+S1->>D2:Do you own MSISDN $payeeMSISDN?
+activate D2
+!if ($simplified != true)
+D2- ->>S1:202 I'll get back to you
+!endif
+D2->D2: Check Sanction list status & trigger a refresh of the status
+deactivate S1
+D2->>S1:Yes, it's $receiverName. He can receive in $payeeCurrency\n**PUT /parties/MSISDN/$payeeMSISDN**
+!if ($simplified != true)
+note left of D2
+    PUT /parties
+    {
+        "partyIdInfo": {
+            "partyIdType": "MSISDN",
+            "partyIdentifier": "$payeeMSISDN",
+            "fspId": "$payeeFSPID"
+        },
+        "merchantClassificationCode": "string",
+        "name": "$receiverName",
+        "personalInfo": {
+            "complexName": {
+            "firstName": "$receiverFirstName",
+            "middleName": "$receiverMiddleName",
+            "lastName": "$receiverLastName"
+            },
+            "dateOfBirth": "$receiverDOB",
+            "kycInformation": "<Encrypted KYC Data>"
+        },
+        "supportedCurrencies": [ "$payeeCurrency" ]
+    }
+end note
+!else
+note over D2
+    Payee Info with Encrypted KYC Data
+end note
+!endif
+activate S1
+!if ($simplified != true)
+S1- ->>D2:200 Gotcha
+!endif
+deactivate D2
+S1->>D1:Yes, it's $receiverName. He can receive in $payeeCurrency\n**PUT /parties/MSISDN/$payeeMSISDN**
+
+
+!if ($simplified != true)
+D1- ->>S1:200 Gotcha
+!endif
+deactivate D1
+deactivate S1
+
+D1->A1: Hi, $senderName: The number belongs to $receiverName \nLet me know if you want to go ahead
+A1->D1: Payer has accepted the party information
+
+
+== Currency conversion ==
+
+D1->D1:Hmmm. I can only send in $payerCurrency.\nI need to get some currency conversion
+activate D1
+D1->>S1:What FXPs do you know about?\n**GET /services/FXP**
+activate S1
+!if ($simplified != true)
+S1- ->>D1:202 I'll get back to you
+!endif
+
+S1->>D1:Here are the available FXPs:FDH FX
+note left of S1
+    PUT /services/FXP
+    {
+        "providers": [
+            "$fxpID"
+        ]
+    }
+end note
+
+!if ($simplified != true)
+D1- ->>S1:200 Gotcha
+!endif
+deactivate D1
+deactivate S1
+
+D1->D1:I'll ask FDH FX to perform my conversion
+
+activate D1
+D1->>S1:Here is the initial version of the transfer.\nPlease quote me for the currency conversion.
+
+note right of D1
+    **post /fxQuotes**
+    {
+        "conversionRequestId": "$conversionRequestId",
+        "conversionTerms": {
+            "conversionId": "$conversionId",
+            "initiatingFsp": "$payerFSPID",
+            "counterPartyFsp": "$fxpID",
+            "amountType": "SEND",
+            "sourceAmount": {
+                "currency": "$payerCurrency",
+                "amount": "$payerSendAmount"
+            },
+            "targetAmount": {
+                "currency": "$payeeCurrency"
+            },
+            "expiration": "2021-08-25T14:17:09.663+01:00"
+        }
+    }
+end note
+
+activate S1
+!if ($simplified != true)
+S1- ->>D1:202 I'll get back to you
+!endif
+
+S1->>FXP:Here is the initial version of the transfer.\nPlease quote me for the currency conversion.\n**POST /fxQuote**
+activate FXP
+!if ($simplified != true)
+FXP- ->>S1:202 I'll get back to you
+!endif
+deactivate S1
+
+note over FXP
+    I will add a $fxpChargesSource $payerCurrency fee for undertaking the conversion.
+    Now I'll set an expiry time, sign the quotation object,
+end note
+!if ($simplified != true)
+note right of FXP
+    {
+        "conversionTerms": {
+            "conversionId": "$conversionId",
+            "initiatingFsp": "$payerFSPID",
+            "counterPartyFsp": "$fxpID",
+            "amountType": "SEND",
+            "sourceAmount": {
+                "currency": "$payerCurrency",
+                "amount": "$fxpSourceAmount"
+            },
+            "targetAmount": {
+                "currency": "$payeeCurrency",
+                "amount": "$fxpTargetAmount"
+            },
+            "expiration": "2021-08-25T14:17:09.663+01:00"
+            "charges": [
+                {
+                    "chargeType": "string",
+                    "sourceAmount": {
+                        "currency": "$payerCurrency",
+                        "amount": "$fxpChargesSource"
+                    },
+                    "targetAmount": {
+                        "currency": "$payeeCurrency",
+                        "amount": "$fxpChargesTarget"
+                    }
+                }
+            ]
+        }
+    }
+end note
+!endif
+
+note over FXP
+    Now I'll sign the quotation object,
+    create an ILP prepare packet and return it in the intermediary object.
+
+    NOTE: the ILP prepare packet contains the following items, all encoded:
+    - The amount being sent (i.e. in the source currency)
+    - An expiry time
+    - The condition
+    - The name of the FXP
+    - The content of the conversion terms
+end note
+
+note left of FXP
+    **PUT /fxQuotes/$conversionRequestId**
+    {
+        "condition": "$fxCondition",
+        "conversionTerms": {
+            "conversionId": "$conversionId",
+            "initiatingFsp": "$payerFSPID",
+            "counterPartyFsp": "$fxpID",
+            "amountType": "SEND",
+            "sourceAmount": {
+                "currency": "$payerCurrency",
+                "amount": "$fxpSourceAmount"
+            },
+            "targetAmount": {
+                "currency": "$payeeCurrency",
+                "amount": "$fxpTargetAmount"
+            },
+            "expiration": "2021-08-25T14:17:09.663+01:00"
+            "charges": [
+                {
+                    "chargeType": "string",
+                    "sourceAmount": {
+                        "currency": "$payerCurrency",
+                        "amount": "$fxpChargesSource"
+                    },
+                    "targetAmount": {
+                        "currency": "$payeeCurrency",
+                        "amount": "$fxpChargesTarget"
+                    }
+                }
+            ]
+        }
+    }
+end note
+FXP->>S1:Here's the signed conversion object
+
+activate S1
+!if ($simplified != true)
+S1- ->>FXP:200 Gotcha
+!endif
+deactivate FXP
+deactivate D1
+S1->>D1:Here's the signed conversion object\n**PUT /fxQuotes/$conversionRequestId**
+
+!if ($simplified != true)
+D1- ->>S1:Gotcha
+!endif
+
+deactivate S1
+
+== Agreement Phase ==
+
+activate D1
+D1->>S1:Please quote for a transfer which sends $fxpTargetAmount $payeeCurrency.\n**POST /quotes**
+!if ($simplified != true)
+note right of D1
+POST /quotes
+
+    {
+        "quoteId": "$quoteId",
+        "transactionId": "$transactionId",
+        "payee": {
+            "partyIdInfo": {
+                "partyIdType": "MSISDN",
+                "partyIdentifier": "$payeeMSISDN",
+                "fspId": "$payeeFSPID"
+            },
+            "name": "$receiverName",
+            "personalInfo": {
+                "complexName": {
+                "firstName": "$receiverFirstName",
+                "middleName": "$receiverMiddleName",
+                "lastName": "$receiverLastName"
+                },
+                "dateOfBirth": "$receiverDOB",
+                "kycInformation": "<Encrypted KYC Data>"
+            },
+            "supportedCurrencies": [ "$payeeCurrency" ]
+        },
+        "payer": {
+            "partyIdInfo": {
+                "partyIdType": "MSISDN",
+                "partyIdentifier": "$payerMSISDN",
+                "fspId": "$payerFSPID"
+            },
+            "name": "$senderName",
+            "personalInfo": {
+                "complexName": {
+                "firstName": "$senderFirstName",
+                "middleName": "$senderMiddleName",
+                "lastName": "$senderLastName"
+                },
+                "dateOfBirth": "$senderDOB"
+            }
+        },
+        "amountType": "SEND",
+        "amount": {
+            "currency": "$payeeCurrency",
+            "amount": "$fxpTargetAmount"
+        },
+        "converter": "PAYER",
+        "expiration": "$quotePayerExpiration"
+    }
+end note
+!endif
+activate S1
+!if ($simplified != true)
+S1- ->>D1:202 I'll get back to you
+!endif
+
+S1->>D2:**POST /quotes**
+activate D2
+!if ($simplified != true)
+D2- ->>S1:202 I'll get back to you
+!endif
+deactivate S1
+
+D2->D2:OK, so I will charge $payeeFee $payeeCurrency for this.\nNow I create terms of the transfer
+!if ($simplified != true)
+note right of D2
+{
+    "quoteId": "$quoteId",
+    "transactionId": "$transactionId",
+    "payeeFspFeeAmount": "$payeeFee",
+    "payeeFspFeeAmountCurrency": "$payeeCurrency",
+    "payeeReceiveAmount": "$payeeReceiveAmount",
+    "payeeReceiveAmountCurrency": "$payeeCurrency",
+    "transferAmount": "$targetAmount",
+    "transferAmountCurrency": "$payeeCurrency"
+    "expiration": "$quotePayerExpiration"
+}
+end note
+!endif
+D2->D2:Now I will sign the transaction object
+D2->>S1:Here's the signed quote
+note left of D2
+    **put /quotes/$quoteId**
+
+    {
+        "transferAmount": {
+            "currency": "$payeeCurrency",
+            "amount": "$targetAmount"
+        },
+        "payeeReceiveAmount": {
+            "currency": "$payeeCurrency",
+            "amount": "$payeeReceiveAmount"
+        },
+        "payeeFspFee": {
+            "currency": "$payeeCurrency",
+            "amount": "$payeeFee"
+        },
+        "expiration": "$payeeQuoteExpiration",
+        "ilpPacket": "
+            <This is encoded transaction object. It contains data from quote request and response.>
+        ",
+        "condition": "$condition"
+    }
+
+end note
+activate S1
+!if ($simplified != true)
+S1- ->>D2:200 Gotcha
+!endif
+deactivate D2
+S1->>D1:Here's the signed quote\n**PUT /quotes/382987a8-75ce-4037-b500-c475e08c1727**
+
+!if ($simplified != true)
+D1- ->>S1:200 Gotcha
+!endif
+deactivate D1
+deactivate S1
+D1->D1:OK, I can see that there are going to be $payeeFee $payeeCurrency in charges.
+
+== Sender Confirmation ==
+D1->A1: Hi, $senderName: I can do the transfer.\nIt'll cost you $totalChargesSourceCurrency $payerCurrency($totalChargesTargetCurrency $payeeCurrency) in fees\nand $receiverName will receive\n$payeeReceiveAmount $payeeCurrency.\nLet me know if you want to go ahead
+A1->D1: Great! Yes please, go ahead
+
+D1->D1: Payer has accepted the terms please proceed
+
+== Transfer Phase ==
+activate D1
+D1->>S1:Please confirm your part of the transfer
+note right of D1
+**POST /fxTransfers**
+{
+    "commitRequestId": "$commitRequestId",
+    "determiningTransferId": "$determiningTransferId",
+    "initiatingFsp": "$payerFSPID",
+    "counterPartyFsp": "$fxpID",
+    "amountType": "SEND",
+    "sourceAmount": {
+        "currency": "$payerCurrency",
+        "amount": "$fxpSourceAmount"
+    },
+    "targetAmount": {
+        "currency": "$payeeCurrency",
+        "amount": "$fxpTargetAmount"
+    },
+    "condition": "$fxCondition"
+}
+end note
+activate S1
+!if ($simplified != true)
+S1- ->>D1:202 I'll get back to you
+!endif
+deactivate D2
+!if ($hideSwitchDetail != true)
+S1->S1:OK, so this is an FX confirmation.
+S1->S1: Is there any transfer with determiningTransactionId?\nNo, it does'nt.
+!endif
+S1->S1: Liquidity check and reserve on Payer DFSP's account
+!if ($hideSwitchDetail != true)
+note over S1
+Reservations:
+
+**$payerFSPID has a reservation of $fxpSourceAmount $payerCurrency**
+end note
+!endif
+S1->>FXP:Please confirm the currency conversion part of the transfer\n** POST /fxTransfers**
+activate FXP
+!if ($simplified != true)
+FXP- ->>S1:202 I'll get back to you
+!endif
+deactivate S1
+alt conversion failed
+  FXP->>S1:Failed.
+  note left of FXP
+  **PUT /fxTransfers/$commitRequestId**/error
+  {
+    "errorInformation": {
+      "errorCode": "5100",
+      "errorDescription": "error message"
+    }
+  }
+  ( **or** )
+  **PUT /fxTransfers/$commitRequestId**
+  {
+    "conversionState": "ABORTED",
+    "extensionList": {
+      "extension": [
+        {
+          "key": "reason",
+          "value": "some reason"
+        }
+      ]
+    }
+  }
+  end note
+else conversion success
+  FXP->FXP:Reserve funds for FX conversion
+  FXP->>S1:Confirmed. Here's the fulfilment
+  note left of FXP
+  **PUT /fxTransfers/$commitRequestId**
+  {
+  "fulfilment": "188909ceb6cd5c35d5c6b394f0a9e5a0571199c332fbd013dc1e6b8a2d5fff42",
+  "completedTimestamp": "2021-08-25T14:17:08.175+01:00",
+  "conversionState": "RESERVED"
+  }
+  end note
+  S1->S1:Check fulfilment matches and cancel if not.
+  alt Conversion failed
+      S1->FXP:Sorry. Conversion failed
+      note over FXP
+      **PATCH /fxTransfers/$commitRequestId**
+      {
+      "completedTimestamp": "2021-08-25T14:17:08.175+01:00",
+      "conversionState": "ABORTED"
+      }
+      end note
+      activate FXP
+      FXP- ->S1:Acknowledged
+      FXP->FXP:Remove any reservations or obligations
+      deactivate FXP
+  end
+end
+!if ($simplified != true)
+S1- ->>FXP:200 Gotcha
+!endif
+deactivate FXP
+
+alt Conversion failed
+  S1->S1: Abort the fxTransfer. Revert the position changes involved in this fxTransfer.
+  S1->S1: Incase of payee side conversion, there will be dependent transfer. \nBut do not cancel that transfer as DFSP can try currency conversion with another FXP. \nBut make sure that while processing the fulfilment of the original transfer, it shouldn't pickup this fxTransfer as the dependent transfer. \n(Maybe by removing the entry from watchlist)
+  S1->>D1:Sorry. Conversion failed
+  note over S1
+  **PUT /fxTransfers/$commitRequestId/error**
+  {
+    "errorInformation": {
+      "errorCode": "5100",
+      "errorDescription": "error message"
+    }
+  }
+  ( **or** )
+  **PUT /fxTransfers/$commitRequestId**
+  {
+    "conversionState": "ABORTED",
+    "extensionList": {
+      "extension": [
+        {
+          "key": "reason",
+          "value": "some reason"
+        }
+      ]
+    }
+  }
+  end note
+else Conversion succeeded
+    S1->D1:Conversion succeeded subject to transfer success\n**PUT /fxTransfers/77c9d78d-c26a-4474-8b3c-99b96a814bfc**
+end
+
+!if ($simplified != true)
+D1- ->S1:200 Gotcha
+!endif
+deactivate D1
+D1->D1:OK, so that's all right\nNow I can send the transfer itself
+
+D1->S1:Please do the transfer **POST /transfers**
+!if ($simplified != true)
+note over D1
+POST /transfers
+{
+    "transferId": "$transferId",
+    "payeeFsp": "$payeeFSPID",
+    "payerFsp": "$payerFSPID",
+    "amount": {
+        "currency": "$payeeCurrency",
+        "amount": "$targetAmount"
+    },
+    "ilpPacket": "<Encoded transaction object>",
+    "condition": "$condition",
+    "expiration": "2016-05-24T08:38:08.699-04:00"
+}
+end note
+!endif
+activate S1
+!if ($simplified != true)
+S1- ->D1:202 I'll get back to you
+!endif
+deactivate D1
+!if ($hideSwitchDetail != true)
+S1->S1:Is there a dependent transfer? Yes
+!endif
+S1->S1:Perform liquidity check and reserve funds\nagainst creditor party to dependent transfer
+note over S1
+Reservations:
+
+$payerFSPID has a reservation of $fxpSourceAmount $payerCurrency
+**$fxpID has a reservation of $targetAmount $payeeCurrency**
+end note
+
+S1->D2:Please do the transfer\n**POST /transfers**
+activate D2
+!if ($simplified != true)
+D2- ->S1:202 I'll get back to you
+!endif
+deactivate S1
+D2->D2:Let me check that the terms of the dependent transfer\nare the same as the ones I agreed to\nand that the fulfilment and condition match
+
+D2->A2: Hi $receiverName's, you got inbound transfer $payeeReceiveAmount $payeeCurrency
+deactivate D2
+
+alt transfer failed
+  D2->>S1:Transfer is rejected
+  note over D2
+  **PUT /transfers/$commitRequestId**/error
+  {
+    "errorInformation": {
+      "errorCode": "5100",
+      "errorDescription": "error message"
+    }
+  }
+  ( **or** )
+  {
+    "transferState": "ABORETED"
+  }
+  end note
+
+  activate S1
+  !if ($simplified != true)
+  S1- ->>D2:200 Gotcha
+  !endif
+  
+  S1->S1: Revert the position changes involved in this transfer
+  S1->S1: If there are dependency fxTransfers, abort the fxTransfers as well and revert the position changes involved in those fxTransfers
+
+  S1->>FXP: The linked transfer is failed.\nRemove any reservations or obligations
+  note over S1
+  **PATCH /fxTransfers/$commitRequestId**
+  {
+      "completedTimestamp": "2021-08-25T14:17:08.227+01:00",
+      "transferState": "ABORTED"
+  }
+  end note
+  activate FXP
+  FXP->FXP: Oops!
+  FXP- ->>S1:200 Gotcha
+  deactivate FXP
+  S1->>D1:Transfer is complete\n**PUT /transfers/$commitRequestId/error**
+  activate D1
+  !if ($simplified != true)
+  D1- ->S1:200 Gotcha
+  !endif
+  deactivate S1
+  D1->A1:Your transfer is failed
+  deactivate D1
+else transfer success
+  D2->>S1:Transfer is confirmed, here's the fulfilment
+  note over D2
+  **PUT /transfers/$commitRequestId**
+  {
+      "completedTimestamp": "2021-08-25T14:17:08.227+01:00",
+      "fulfilment": "mhPUT9ZAwd-BXLfeSd7-YPh46rBWRNBiTCSWjpku90s",
+      "transferState": "COMMITTED"
+  }
+  end note
+  activate S1
+  !if ($simplified != true)
+  S1- ->>D2:200 Gotcha
+  !endif
+  
+  !if ($hideSwitchDetail != true)
+  S1->S1:Is there a dependent transfer?\nYes, there is.
+  S1->S1:Is this dependency against the debtor party to the transfer?\nYes, it is.
+  S1->S1:Create an obligation from the debtor party to the party named in the dependency (the FXP)
+  S1->S1:Is the transfer denominated in the currency of the payee receive amount?\nYes, it is.
+  S1->S1:Create an obligation from the party named in the dependency\nto the creditor party for the transfer
+  !else
+  S1->S1:Create obligations from the payer to the FXP and from FXP to the payee
+  !endif
+  S1->>FXP:The transfer succeeded.\nYou can clear it in your ledgers
+  note over S1
+  **PATCH /fxTransfers/$commitRequestId**
+  {
+      "completedTimestamp": "2021-08-25T14:17:08.227+01:00",
+      "fulfilment": "mhPUT9ZAwd-BXLfeSd7-YPh46rBWRNBiTCSWjpku90s",
+      "transferState": "COMMITTED"
+  }
+  end note
+  activate FXP
+  FXP->FXP:Let's just check: does this match the stuff I sent?
+  FXP->FXP:It does. Great. I'll clear the conversion
+  FXP- ->>S1:200 Gotcha
+  deactivate FXP
+  note over S1
+      Ledger positions:
+      $payerFSPID has a debit of $fxpSourceAmount $payerCurrency
+      $fxpID has a credit of $fxpSourceAmount $payerCurrency
+      $fxpID has a debit of $fxpTargetAmount $payeeCurrency
+      $payeeFSPID has a credit of $targetAmount $payeeCurrency
+  end note
+  S1->>D1:Transfer is complete\n**PUT /transfers/$commitRequestId**
+  activate D1
+  !if ($simplified != true)
+  D1- ->S1:200 Gotcha
+  !endif
+  deactivate S1
+
+  D1->A1:Your transfer is successful
+  deactivate D1
+end
+@enduml
+
+@startuml
+
+
+title Remittance Transfer using Mojaloop FX APIs POC\nPayer DFSP requests conversion with SEND amount
+actor "$senderName" as A1
+box "Payer DFSP" #LightBlue  
+  participant "Payer DFSP" as D1
+end box
+
+participant "Mojaloop Switch" as S1
+
+
+box "FX provider"  
+  participant "FXP\nConnector" as FXP
+end box
+
+box "Payee DFSP" #LightBlue   
+  participant "Payee\nMojaloop\nConnector" as D2
+end box
+
+actor "Yaro" as A2
+autonumber
+
+A1->D1:I'd like to pay Yaro\n300 BWP, please
+
+== Discovery Phase ==
+activate D1
+D1->>S1:I want to send to MSISDN 2551234567890\n**GET /parties/MSISDN/2551234567890**
+activate S1
+
+S1->S1:Who owns MSISDN 2551234567890?\nIt's PayeeFSP
+S1->>D2:Do you own MSISDN 2551234567890?
+activate D2
+D2->D2: Check Sanction list status & trigger a refresh of the status
+deactivate S1
+D2->>S1:Yes, it's Yaro. He can receive in TZS\n**PUT /parties/MSISDN/2551234567890**
+note over D2
+    Payee Info with Encrypted KYC Data
+end note
+activate S1
+deactivate D2
+S1->>D1:Yes, it's Yaro. He can receive in TZS\n**PUT /parties/MSISDN/2551234567890**
+
+
+deactivate D1
+deactivate S1
+
+D1->A1: Hi, $senderName: The number belongs to Yaro \nLet me know if you want to go ahead
+A1->D1: Payer has accepted the party information
+
+
+== Currency conversion ==
+
+D1->D1:Hmmm. I can only send in BWP.\nI need to get some currency conversion
+activate D1
+D1->>S1:What FXPs do you know about?\n**GET /services/FXP**
+activate S1
+
+S1->>D1:Here are the available FXPs:FDH FX
+note left of S1
+    PUT /services/FXP
+    {
+        "providers": [
+            "FDH_FX"
+        ]
+    }
+end note
+
+deactivate D1
+deactivate S1
+
+D1->D1:I'll ask FDH FX to perform my conversion
+
+activate D1
+D1->>S1:Here is the initial version of the transfer.\nPlease quote me for the currency conversion.
+
+note right of D1
+    **post /fxQuotes**
+    {
+        "conversionRequestId": "828cc75f-1654-415e-8fcd-df76cc9329b9",
+        "conversionTerms": {
+            "conversionId": "581f68ef-b54f-416f-9161-ac34e889a84b",
+            "initiatingFsp": "PayerFSP",
+            "counterPartyFsp": "FDH_FX",
+            "amountType": "SEND",
+            "sourceAmount": {
+                "currency": "BWP",
+                "amount": "300"
+            },
+            "targetAmount": {
+                "currency": "TZS"
+            },
+            "expiration": "2021-08-25T14:17:09.663+01:00"
+        }
+    }
+end note
+
+activate S1
+
+S1->>FXP:Here is the initial version of the transfer.\nPlease quote me for the currency conversion.\n**POST /fxQuote**
+activate FXP
+deactivate S1
+
+note over FXP
+    I will add a 33 BWP fee for undertaking the conversion.
+    Now I'll set an expiry time, sign the quotation object,
+end note
+
+note over FXP
+    Now I'll sign the quotation object,
+    create an ILP prepare packet and return it in the intermediary object.
+
+    NOTE: the ILP prepare packet contains the following items, all encoded:
+    - The amount being sent (i.e. in the source currency)
+    - An expiry time
+    - The condition
+    - The name of the FXP
+    - The content of the conversion terms
+end note
+
+note left of FXP
+    **PUT /fxQuotes/828cc75f-1654-415e-8fcd-df76cc9329b9**
+    {
+        "condition": "GRzLaTP7DJ9t4P-a_BA0WA9wzzlsugf00-Tn6kESAfM",
+        "conversionTerms": {
+            "conversionId": "581f68ef-b54f-416f-9161-ac34e889a84b",
+            "initiatingFsp": "PayerFSP",
+            "counterPartyFsp": "FDH_FX",
+            "amountType": "SEND",
+            "sourceAmount": {
+                "currency": "BWP",
+                "amount": "300"
+            },
+            "targetAmount": {
+                "currency": "TZS",
+                "amount": "48000"
+            },
+            "expiration": "2021-08-25T14:17:09.663+01:00"
+            "charges": [
+                {
+                    "chargeType": "string",
+                    "sourceAmount": {
+                        "currency": "BWP",
+                        "amount": "33"
+                    },
+                    "targetAmount": {
+                        "currency": "TZS",
+                        "amount": "6000"
+                    }
+                }
+            ]
+        }
+    }
+end note
+FXP->>S1:Here's the signed conversion object
+
+activate S1
+deactivate FXP
+deactivate D1
+S1->>D1:Here's the signed conversion object\n**PUT /fxQuotes/828cc75f-1654-415e-8fcd-df76cc9329b9**
+
+
+deactivate S1
+
+== Agreement Phase ==
+
+activate D1
+D1->>S1:Please quote for a transfer which sends 48000 TZS.\n**POST /quotes**
+activate S1
+
+S1->>D2:**POST /quotes**
+activate D2
+deactivate S1
+
+D2->D2:OK, so I will charge 4000 TZS for this.\nNow I create terms of the transfer
+D2->D2:Now I will sign the transaction object
+D2->>S1:Here's the signed quote
+note left of D2
+    **put /quotes/382987a8-75ce-4037-b500-c475e08c1727**
+
+    {
+        "transferAmount": {
+            "currency": "TZS",
+            "amount": "48000"
+        },
+        "payeeReceiveAmount": {
+            "currency": "TZS",
+            "amount": "44000"
+        },
+        "payeeFspFee": {
+            "currency": "TZS",
+            "amount": "4000"
+        },
+        "expiration": "$payeeQuoteExpiration",
+        "ilpPacket": "
+            <This is encoded transaction object. It contains data from quote request and response.>
+        ",
+        "condition": "HOr22-H3AfTDHrSkPjJtVPRdKouuMkDXTR4ejlQa8Ks"
+    }
+
+end note
+activate S1
+deactivate D2
+S1->>D1:Here's the signed quote\n**PUT /quotes/382987a8-75ce-4037-b500-c475e08c1727**
+
+deactivate D1
+deactivate S1
+D1->D1:OK, I can see that there are going to be 4000 TZS in charges.
+
+== Sender Confirmation ==
+D1->A1: Hi, $senderName: I can do the transfer.\nIt'll cost you 55 BWP(10000 TZS) in fees\nand Yaro will receive\n44000 TZS.\nLet me know if you want to go ahead
+A1->D1: Great! Yes please, go ahead
+
+D1->D1: Payer has accepted the terms please proceed
+
+== Transfer Phase ==
+activate D1
+D1->>S1:Please confirm your part of the transfer
+note right of D1
+**POST /fxTransfers**
+{
+    "commitRequestId": "77c9d78d-c26a-4474-8b3c-99b96a814bfc",
+    "determiningTransferId": "d9ce59d4-3598-4396-8630-581bb0551451",
+    "initiatingFsp": "PayerFSP",
+    "counterPartyFsp": "FDH_FX",
+    "amountType": "SEND",
+    "sourceAmount": {
+        "currency": "BWP",
+        "amount": "300"
+    },
+    "targetAmount": {
+        "currency": "TZS",
+        "amount": "48000"
+    },
+    "condition": "GRzLaTP7DJ9t4P-a_BA0WA9wzzlsugf00-Tn6kESAfM"
+}
+end note
+activate S1
+deactivate D2
+S1->S1:OK, so this is an FX confirmation.
+S1->S1: Is there any transfer with determiningTransactionId?\nNo, it does'nt.
+S1->S1: Liquidity check and reserve on Payer DFSP's account
+note over S1
+Reservations:
+
+**PayerFSP has a reservation of 300 BWP**
+end note
+S1->>FXP:Please confirm the currency conversion part of the transfer\n** POST /fxTransfers**
+activate FXP
+deactivate S1
+alt conversion failed
+  FXP->>S1:Failed.
+  note left of FXP
+  **PUT /fxTransfers/77c9d78d-c26a-4474-8b3c-99b96a814bfc**/error
+  {
+    "errorInformation": {
+      "errorCode": "5100",
+      "errorDescription": "error message"
+    }
+  }
+  ( **or** )
+  **PUT /fxTransfers/77c9d78d-c26a-4474-8b3c-99b96a814bfc**
+  {
+    "conversionState": "ABORTED",
+    "extensionList": {
+      "extension": [
+        {
+          "key": "reason",
+          "value": "some reason"
+        }
+      ]
+    }
+  }
+  end note
+else conversion success
+  FXP->FXP:Reserve funds for FX conversion
+  FXP->>S1:Confirmed. Here's the fulfilment
+  note left of FXP
+  **PUT /fxTransfers/77c9d78d-c26a-4474-8b3c-99b96a814bfc**
+  {
+  "fulfilment": "188909ceb6cd5c35d5c6b394f0a9e5a0571199c332fbd013dc1e6b8a2d5fff42",
+  "completedTimestamp": "2021-08-25T14:17:08.175+01:00",
+  "conversionState": "RESERVED"
+  }
+  end note
+  S1->S1:Check fulfilment matches and cancel if not.
+  alt Conversion failed
+      S1->FXP:Sorry. Conversion failed
+      note over FXP
+      **PATCH /fxTransfers/77c9d78d-c26a-4474-8b3c-99b96a814bfc**
+      {
+      "completedTimestamp": "2021-08-25T14:17:08.175+01:00",
+      "conversionState": "ABORTED"
+      }
+      end note
+      activate FXP
+      FXP- ->S1:Acknowledged
+      FXP->FXP:Remove any reservations or obligations
+      deactivate FXP
+  end
+end
+deactivate FXP
+
+alt Conversion failed
+  S1->S1: Abort the fxTransfer. Revert the position changes involved in this fxTransfer.
+  S1->S1: Incase of payee side conversion, there will be dependent transfer. \nBut do not cancel that transfer as DFSP can try currency conversion with another FXP. \nBut make sure that while processing the fulfilment of the original transfer, it shouldn't pickup this fxTransfer as the dependent transfer. \n(Maybe by removing the entry from watchlist)
+  S1->>D1:Sorry. Conversion failed
+  note over S1
+  **PUT /fxTransfers/77c9d78d-c26a-4474-8b3c-99b96a814bfc/error**
+  {
+    "errorInformation": {
+      "errorCode": "5100",
+      "errorDescription": "error message"
+    }
+  }
+  ( **or** )
+  **PUT /fxTransfers/77c9d78d-c26a-4474-8b3c-99b96a814bfc**
+  {
+    "conversionState": "ABORTED",
+    "extensionList": {
+      "extension": [
+        {
+          "key": "reason",
+          "value": "some reason"
+        }
+      ]
+    }
+  }
+  end note
+else Conversion succeeded
+    S1->D1:Conversion succeeded subject to transfer success\n**PUT /fxTransfers/77c9d78d-c26a-4474-8b3c-99b96a814bfc**
+end
+
+deactivate D1
+D1->D1:OK, so that's all right\nNow I can send the transfer itself
+
+D1->S1:Please do the transfer **POST /transfers**
+activate S1
+deactivate D1
+S1->S1:Is there a dependent transfer? Yes
+S1->S1:Perform liquidity check and reserve funds\nagainst creditor party to dependent transfer
+note over S1
+Reservations:
+
+PayerFSP has a reservation of 300 BWP
+**FDH_FX has a reservation of 48000 TZS**
+end note
+
+S1->D2:Please do the transfer\n**POST /transfers**
+activate D2
+deactivate S1
+D2->D2:Let me check that the terms of the dependent transfer\nare the same as the ones I agreed to\nand that the fulfilment and condition match
+
+D2->A2: Hi Yaro's, you got inbound transfer 44000 TZS
+deactivate D2
+
+alt transfer failed
+  D2->>S1:Transfer is rejected
+  note over D2
+  **PUT /transfers/77c9d78d-c26a-4474-8b3c-99b96a814bfc**/error
+  {
+    "errorInformation": {
+      "errorCode": "5100",
+      "errorDescription": "error message"
+    }
+  }
+  ( **or** )
+  {
+    "transferState": "ABORETED"
+  }
+  end note
+
+  activate S1
+  
+  S1->S1: Revert the position changes involved in this transfer
+  S1->S1: If there are dependency fxTransfers, abort the fxTransfers as well and revert the position changes involved in those fxTransfers
+
+  S1->>FXP: The linked transfer is failed.\nRemove any reservations or obligations
+  note over S1
+  **PATCH /fxTransfers/77c9d78d-c26a-4474-8b3c-99b96a814bfc**
+  {
+      "completedTimestamp": "2021-08-25T14:17:08.227+01:00",
+      "transferState": "ABORTED"
+  }
+  end note
+  activate FXP
+  FXP->FXP: Oops!
+  FXP- ->>S1:200 Gotcha
+  deactivate FXP
+  S1->>D1:Transfer is complete\n**PUT /transfers/77c9d78d-c26a-4474-8b3c-99b96a814bfc/error**
+  activate D1
+  deactivate S1
+  D1->A1:Your transfer is failed
+  deactivate D1
+else transfer success
+  D2->>S1:Transfer is confirmed, here's the fulfilment
+  note over D2
+  **PUT /transfers/77c9d78d-c26a-4474-8b3c-99b96a814bfc**
+  {
+      "completedTimestamp": "2021-08-25T14:17:08.227+01:00",
+      "fulfilment": "mhPUT9ZAwd-BXLfeSd7-YPh46rBWRNBiTCSWjpku90s",
+      "transferState": "COMMITTED"
+  }
+  end note
+  activate S1
+  
+  S1->S1:Is there a dependent transfer?\nYes, there is.
+  S1->S1:Is this dependency against the debtor party to the transfer?\nYes, it is.
+  S1->S1:Create an obligation from the debtor party to the party named in the dependency (the FXP)
+  S1->S1:Is the transfer denominated in the currency of the payee receive amount?\nYes, it is.
+  S1->S1:Create an obligation from the party named in the dependency\nto the creditor party for the transfer
+  S1->>FXP:The transfer succeeded.\nYou can clear it in your ledgers
+  note over S1
+  **PATCH /fxTransfers/77c9d78d-c26a-4474-8b3c-99b96a814bfc**
+  {
+      "completedTimestamp": "2021-08-25T14:17:08.227+01:00",
+      "fulfilment": "mhPUT9ZAwd-BXLfeSd7-YPh46rBWRNBiTCSWjpku90s",
+      "transferState": "COMMITTED"
+  }
+  end note
+  activate FXP
+  FXP->FXP:Let's just check: does this match the stuff I sent?
+  FXP->FXP:It does. Great. I'll clear the conversion
+  FXP- ->>S1:200 Gotcha
+  deactivate FXP
+  note over S1
+      Ledger positions:
+      PayerFSP has a debit of 300 BWP
+      FDH_FX has a credit of 300 BWP
+      FDH_FX has a debit of 48000 TZS
+      PayeeFSP has a credit of 48000 TZS
+  end note
+  S1->>D1:Transfer is complete\n**PUT /transfers/77c9d78d-c26a-4474-8b3c-99b96a814bfc**
+  activate D1
+  deactivate S1
+
+  D1->A1:Your transfer is successful
+  deactivate D1
+end
+@enduml
+
+PlantUML version 1.2022.6(Tue Jun 21 18:34:49 BST 2022)
+(GPLV2 source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) Client VM
+Default Encoding: Cp1252
+Language: en
+Country: GB
+--></g></svg>
