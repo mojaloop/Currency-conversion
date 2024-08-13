@@ -1,0 +1,706 @@
+@startuml
+
+!$simplified = true
+!$hideSwitchDetail = false
+!$advancedCoreConnectorFlow = true
+!$senderLastName = ""
+!$senderDOB = "1966-06-16"
+!$receiverName = "Yaro"
+!$receiverFirstName = "Yaro"
+!$receiverMiddleName = ""
+!$receiverLastName = ""
+!$receiverDOB = "1966-06-16"
+!$payerCurrency = "BWP"
+!$payeeCurrency = "TZS"
+!$payerFSPID = "PayerFSP"
+!$payeeFSPID = "PayeeFSP"
+!$fxpID = "FDH_FX"
+!$payerMSISDN = "26787654321"
+!$payeeMSISDN = "2551234567890"
+!$payeeReceiveAmount = "44000"
+!$payerSendAmount = "300"
+!$payeeFee = "4000"
+!$targetAmount = "48000"
+!$fxpChargesSource = "33"
+!$fxpChargesTarget = "6000"
+!$fxpSourceAmount = "300"
+!$fxpTargetAmount = "48000"
+!$totalChargesSourceCurrency = "55"
+!$totalChargesTargetCurrency = "10000"
+!$conversionRequestId = "828cc75f-1654-415e-8fcd-df76cc9329b9"
+!$conversionId = "581f68ef-b54f-416f-9161-ac34e889a84b"
+!$homeTransactionId = "string"
+!$quoteId = "382987a8-75ce-4037-b500-c475e08c1727"
+!$transactionId = "d9ce59d4-3598-4396-8630-581bb0551451"
+!$quotePayerExpiration = "2021-08-25T14:17:09.663+01:00"
+!$quotePayeeExpiration = "2021-08-25T14:17:09.663+01:00"
+!$commitRequestId = "77c9d78d-c26a-4474-8b3c-99b96a814bfc"
+!$determiningTransferId = "d9ce59d4-3598-4396-8630-581bb0551451"
+!$transferId = "d9ce59d4-3598-4396-8630-581bb0551451"
+!$fxCondition = "GRzLaTP7DJ9t4P-a_BA0WA9wzzlsugf00-Tn6kESAfM"
+!$condition = "HOr22-H3AfTDHrSkPjJtVPRdKouuMkDXTR4ejlQa8Ks"
+
+title Remittance Transfer using Mojaloop FX APIs POC\nPayer DFSP requests conversion with SEND amount
+actor "$senderName" as A1
+box "Payer DFSP" #LightBlue  
+  participant "Payer DFSP" as D1
+end box
+
+participant "Mojaloop Switch" as S1
+
+'box "Discovery Service" #LightYellow
+'  participant "ALS Oracle" as ALS
+'end box
+
+box "FX provider"  
+  participant "FXP\nConnector" as FXP
+end box
+
+box "Payee DFSP" #LightBlue   
+  participant "Payee\nMojaloop\nConnector" as D2
+end box
+
+actor "$receiverName" as A2
+autonumber
+
+A1->D1:I'd like to pay $receiverName\n$payerSendAmount $payerCurrency, please
+
+== Discovery Phase ==
+activate D1
+D1->>S1:I want to send to MSISDN $payeeMSISDN\n**GET /parties/MSISDN/$payeeMSISDN**
+activate S1
+!if ($simplified != true)
+S1-->>D1:202 I'll get back to you
+!endif
+
+S1->S1:Who owns MSISDN $payeeMSISDN?\nIt's $payeeFSPID
+S1->>D2:Do you own MSISDN $payeeMSISDN?
+activate D2
+!if ($simplified != true)
+D2-->>S1:202 I'll get back to you
+!endif
+D2->D2: Check Sanction list status & trigger a refresh of the status
+deactivate S1
+D2->>S1:Yes, it's $receiverName. He can receive in $payeeCurrency\n**PUT /parties/MSISDN/$payeeMSISDN**
+!if ($simplified != true)
+note left of D2
+    PUT /parties
+    {
+        "partyIdInfo": {
+            "partyIdType": "MSISDN",
+            "partyIdentifier": "$payeeMSISDN",
+            "fspId": "$payeeFSPID"
+        },
+        "merchantClassificationCode": "string",
+        "name": "$receiverName",
+        "personalInfo": {
+            "complexName": {
+            "firstName": "$receiverFirstName",
+            "middleName": "$receiverMiddleName",
+            "lastName": "$receiverLastName"
+            },
+            "dateOfBirth": "$receiverDOB",
+            "kycInformation": "<Encrypted KYC Data>"
+        },
+        "supportedCurrencies": [ "$payeeCurrency" ]
+    }
+end note
+!else
+note over D2
+    Payee Info with Encrypted KYC Data
+end note
+!endif
+activate S1
+!if ($simplified != true)
+S1-->>D2:200 Gotcha
+!endif
+deactivate D2
+S1->>D1:Yes, it's $receiverName. He can receive in $payeeCurrency\n**PUT /parties/MSISDN/$payeeMSISDN**
+
+
+!if ($simplified != true)
+D1-->>S1:200 Gotcha
+!endif
+deactivate D1
+deactivate S1
+
+D1->A1: Hi, $senderName: The number belongs to $receiverName \nLet me know if you want to go ahead
+A1->D1: Payer has accepted the party information
+
+
+== Currency conversion ==
+
+D1->D1:Hmmm. I can only send in $payerCurrency.\nI need to get some currency conversion
+activate D1
+D1->>S1:What FXPs do you know about?\n**GET /services/FXP**
+activate S1
+!if ($simplified != true)
+S1-->>D1:202 I'll get back to you
+!endif
+
+S1->>D1:Here are the available FXPs:FDH FX
+note left of S1
+    PUT /services/FXP
+    {
+        "providers": [
+            "$fxpID"
+        ]
+    }
+end note
+
+!if ($simplified != true)
+D1-->>S1:200 Gotcha
+!endif
+deactivate D1
+deactivate S1
+
+D1->D1:I'll ask FDH FX to perform my conversion
+
+activate D1
+D1->>S1:Here is the initial version of the transfer.\nPlease quote me for the currency conversion.
+
+note right of D1
+    **post /fxQuotes**
+    {
+        "conversionRequestId": "$conversionRequestId",
+        "conversionTerms": {
+            "conversionId": "$conversionId",
+            "initiatingFsp": "$payerFSPID",
+            "counterPartyFsp": "$fxpID",
+            "amountType": "SEND",
+            "sourceAmount": {
+                "currency": "$payerCurrency",
+                "amount": "$payerSendAmount"
+            },
+            "targetAmount": {
+                "currency": "$payeeCurrency"
+            },
+            "expiration": "2021-08-25T14:17:09.663+01:00"
+        }
+    }
+end note
+
+activate S1
+!if ($simplified != true)
+S1-->>D1:202 I'll get back to you
+!endif
+
+S1->>FXP:Here is the initial version of the transfer.\nPlease quote me for the currency conversion.\n**POST /fxQuote**
+activate FXP
+!if ($simplified != true)
+FXP-->>S1:202 I'll get back to you
+!endif
+deactivate S1
+
+note over FXP
+    I will add a $fxpChargesSource $payerCurrency fee for undertaking the conversion.
+    Now I'll set an expiry time, sign the quotation object,
+end note
+!if ($simplified != true)
+note right of FXP
+    {
+        "conversionTerms": {
+            "conversionId": "$conversionId",
+            "initiatingFsp": "$payerFSPID",
+            "counterPartyFsp": "$fxpID",
+            "amountType": "SEND",
+            "sourceAmount": {
+                "currency": "$payerCurrency",
+                "amount": "$fxpSourceAmount"
+            },
+            "targetAmount": {
+                "currency": "$payeeCurrency",
+                "amount": "$fxpTargetAmount"
+            },
+            "expiration": "2021-08-25T14:17:09.663+01:00"
+            "charges": [
+                {
+                    "chargeType": "string",
+                    "sourceAmount": {
+                        "currency": "$payerCurrency",
+                        "amount": "$fxpChargesSource"
+                    },
+                    "targetAmount": {
+                        "currency": "$payeeCurrency",
+                        "amount": "$fxpChargesTarget"
+                    }
+                }
+            ]
+        }
+    }
+end note
+!endif
+
+note over FXP
+    Now I'll sign the quotation object,
+    create an ILP prepare packet and return it in the intermediary object.
+
+    NOTE: the ILP prepare packet contains the following items, all encoded:
+    - The amount being sent (i.e. in the source currency)
+    - An expiry time
+    - The condition
+    - The name of the FXP
+    - The content of the conversion terms
+end note
+
+note left of FXP
+    **PUT /fxQuotes/$conversionRequestId**
+    {
+        "condition": "$fxCondition",
+        "conversionTerms": {
+            "conversionId": "$conversionId",
+            "initiatingFsp": "$payerFSPID",
+            "counterPartyFsp": "$fxpID",
+            "amountType": "SEND",
+            "sourceAmount": {
+                "currency": "$payerCurrency",
+                "amount": "$fxpSourceAmount"
+            },
+            "targetAmount": {
+                "currency": "$payeeCurrency",
+                "amount": "$fxpTargetAmount"
+            },
+            "expiration": "2021-08-25T14:17:09.663+01:00"
+            "charges": [
+                {
+                    "chargeType": "string",
+                    "sourceAmount": {
+                        "currency": "$payerCurrency",
+                        "amount": "$fxpChargesSource"
+                    },
+                    "targetAmount": {
+                        "currency": "$payeeCurrency",
+                        "amount": "$fxpChargesTarget"
+                    }
+                }
+            ]
+        }
+    }
+end note
+FXP->>S1:Here's the signed conversion object
+
+activate S1
+!if ($simplified != true)
+S1-->>FXP:200 Gotcha
+!endif
+deactivate FXP
+deactivate D1
+S1->>D1:Here's the signed conversion object\n**PUT /fxQuotes/$conversionRequestId**
+
+!if ($simplified != true)
+D1-->>S1:Gotcha
+!endif
+
+deactivate S1
+
+== Agreement Phase ==
+
+activate D1
+D1->>S1:Please quote for a transfer which sends $fxpTargetAmount $payeeCurrency.\n**POST /quotes**
+!if ($simplified != true)
+note right of D1
+POST /quotes
+
+    {
+        "quoteId": "$quoteId",
+        "transactionId": "$transactionId",
+        "payee": {
+            "partyIdInfo": {
+                "partyIdType": "MSISDN",
+                "partyIdentifier": "$payeeMSISDN",
+                "fspId": "$payeeFSPID"
+            },
+            "name": "$receiverName",
+            "personalInfo": {
+                "complexName": {
+                "firstName": "$receiverFirstName",
+                "middleName": "$receiverMiddleName",
+                "lastName": "$receiverLastName"
+                },
+                "dateOfBirth": "$receiverDOB",
+                "kycInformation": "<Encrypted KYC Data>"
+            },
+            "supportedCurrencies": [ "$payeeCurrency" ]
+        },
+        "payer": {
+            "partyIdInfo": {
+                "partyIdType": "MSISDN",
+                "partyIdentifier": "$payerMSISDN",
+                "fspId": "$payerFSPID"
+            },
+            "name": "$senderName",
+            "personalInfo": {
+                "complexName": {
+                "firstName": "$senderFirstName",
+                "middleName": "$senderMiddleName",
+                "lastName": "$senderLastName"
+                },
+                "dateOfBirth": "$senderDOB"
+            }
+        },
+        "amountType": "SEND",
+        "amount": {
+            "currency": "$payeeCurrency",
+            "amount": "$fxpTargetAmount"
+        },
+        "converter": "PAYER",
+        "expiration": "$quotePayerExpiration"
+    }
+end note
+!endif
+activate S1
+!if ($simplified != true)
+S1-->>D1:202 I'll get back to you
+!endif
+
+S1->>D2:**POST /quotes**
+activate D2
+!if ($simplified != true)
+D2-->>S1:202 I'll get back to you
+!endif
+deactivate S1
+
+D2->D2:OK, so I will charge $payeeFee $payeeCurrency for this.\nNow I create terms of the transfer
+!if ($simplified != true)
+note right of D2
+{
+    "quoteId": "$quoteId",
+    "transactionId": "$transactionId",
+    "payeeFspFeeAmount": "$payeeFee",
+    "payeeFspFeeAmountCurrency": "$payeeCurrency",
+    "payeeReceiveAmount": "$payeeReceiveAmount",
+    "payeeReceiveAmountCurrency": "$payeeCurrency",
+    "transferAmount": "$targetAmount",
+    "transferAmountCurrency": "$payeeCurrency"
+    "expiration": "$quotePayerExpiration"
+}
+end note
+!endif
+D2->D2:Now I will sign the transaction object
+D2->>S1:Here's the signed quote
+note left of D2
+    **put /quotes/$quoteId**
+
+    {
+        "transferAmount": {
+            "currency": "$payeeCurrency",
+            "amount": "$targetAmount"
+        },
+        "payeeReceiveAmount": {
+            "currency": "$payeeCurrency",
+            "amount": "$payeeReceiveAmount"
+        },
+        "payeeFspFee": {
+            "currency": "$payeeCurrency",
+            "amount": "$payeeFee"
+        },
+        "expiration": "$payeeQuoteExpiration",
+        "ilpPacket": "
+            <This is encoded transaction object. It contains data from quote request and response.>
+        ",
+        "condition": "$condition"
+    }
+
+end note
+activate S1
+!if ($simplified != true)
+S1-->>D2:200 Gotcha
+!endif
+deactivate D2
+S1->>D1:Here's the signed quote\n**PUT /quotes/382987a8-75ce-4037-b500-c475e08c1727**
+
+!if ($simplified != true)
+D1-->>S1:200 Gotcha
+!endif
+deactivate D1
+deactivate S1
+D1->D1:OK, I can see that there are going to be $payeeFee $payeeCurrency in charges.
+
+== Sender Confirmation ==
+D1->A1: Hi, $senderName: I can do the transfer.\nIt'll cost you $totalChargesSourceCurrency $payerCurrency($totalChargesTargetCurrency $payeeCurrency) in fees\nand $receiverName will receive\n$payeeReceiveAmount $payeeCurrency.\nLet me know if you want to go ahead
+A1->D1: Great! Yes please, go ahead
+
+D1->D1: Payer has accepted the terms please proceed
+
+== Transfer Phase ==
+activate D1
+D1->>S1:Please confirm your part of the transfer
+note right of D1
+**POST /fxTransfers**
+{
+    "commitRequestId": "$commitRequestId",
+    "determiningTransferId": "$determiningTransferId",
+    "initiatingFsp": "$payerFSPID",
+    "counterPartyFsp": "$fxpID",
+    "amountType": "SEND",
+    "sourceAmount": {
+        "currency": "$payerCurrency",
+        "amount": "$fxpSourceAmount"
+    },
+    "targetAmount": {
+        "currency": "$payeeCurrency",
+        "amount": "$fxpTargetAmount"
+    },
+    "condition": "$fxCondition"
+}
+end note
+activate S1
+!if ($simplified != true)
+S1-->>D1:202 I'll get back to you
+!endif
+deactivate D2
+!if ($hideSwitchDetail != true)
+S1->S1:OK, so this is an FX confirmation.
+S1->S1: Is there any transfer with determiningTransactionId?\nNo, it does'nt.
+!endif
+S1->S1: Liquidity check and reserve on Payer DFSP's account
+!if ($hideSwitchDetail != true)
+note over S1
+Reservations:
+
+**$payerFSPID has a reservation of $fxpSourceAmount $payerCurrency**
+end note
+!endif
+S1->>FXP:Please confirm the currency conversion part of the transfer\n** POST /fxTransfers**
+activate FXP
+!if ($simplified != true)
+FXP-->>S1:202 I'll get back to you
+!endif
+deactivate S1
+alt conversion failed
+  FXP->>S1:Failed.
+  note left of FXP
+  **PUT /fxTransfers/$commitRequestId**/error
+  {
+    "errorInformation": {
+      "errorCode": "5100",
+      "errorDescription": "error message"
+    }
+  }
+  ( **or** )
+  **PUT /fxTransfers/$commitRequestId**
+  {
+    "conversionState": "ABORTED",
+    "extensionList": {
+      "extension": [
+        {
+          "key": "reason",
+          "value": "some reason"
+        }
+      ]
+    }
+  }
+  end note
+else conversion success
+  FXP->FXP:Reserve funds for FX conversion
+  FXP->>S1:Confirmed. Here's the fulfilment
+  note left of FXP
+  **PUT /fxTransfers/$commitRequestId**
+  {
+  "fulfilment": "188909ceb6cd5c35d5c6b394f0a9e5a0571199c332fbd013dc1e6b8a2d5fff42",
+  "completedTimestamp": "2021-08-25T14:17:08.175+01:00",
+  "conversionState": "RESERVED"
+  }
+  end note
+  S1->S1:Check fulfilment matches and cancel if not.
+  alt Conversion failed
+      S1->FXP:Sorry. Conversion failed
+      note over FXP
+      **PATCH /fxTransfers/$commitRequestId**
+      {
+      "completedTimestamp": "2021-08-25T14:17:08.175+01:00",
+      "conversionState": "ABORTED"
+      }
+      end note
+      activate FXP
+      FXP-->S1:Acknowledged
+      FXP->FXP:Remove any reservations or obligations
+      deactivate FXP
+  end
+end
+!if ($simplified != true)
+S1-->>FXP:200 Gotcha
+!endif
+deactivate FXP
+
+alt Conversion failed
+  S1->S1: Abort the fxTransfer. Revert the position changes involved in this fxTransfer.
+  S1->S1: Incase of payee side conversion, there will be dependent transfer. \nBut do not cancel that transfer as DFSP can try currency conversion with another FXP. \nBut make sure that while processing the fulfilment of the original transfer, it shouldn't pickup this fxTransfer as the dependent transfer. \n(Maybe by removing the entry from watchlist)
+  S1->>D1:Sorry. Conversion failed
+  note over S1
+  **PUT /fxTransfers/$commitRequestId/error**
+  {
+    "errorInformation": {
+      "errorCode": "5100",
+      "errorDescription": "error message"
+    }
+  }
+  ( **or** )
+  **PUT /fxTransfers/$commitRequestId**
+  {
+    "conversionState": "ABORTED",
+    "extensionList": {
+      "extension": [
+        {
+          "key": "reason",
+          "value": "some reason"
+        }
+      ]
+    }
+  }
+  end note
+else Conversion succeeded
+    S1->D1:Conversion succeeded subject to transfer success\n**PUT /fxTransfers/77c9d78d-c26a-4474-8b3c-99b96a814bfc**
+end
+
+!if ($simplified != true)
+D1-->S1:200 Gotcha
+!endif
+deactivate D1
+D1->D1:OK, so that's all right\nNow I can send the transfer itself
+
+D1->S1:Please do the transfer **POST /transfers**
+!if ($simplified != true)
+note over D1
+POST /transfers
+{
+    "transferId": "$transferId",
+    "payeeFsp": "$payeeFSPID",
+    "payerFsp": "$payerFSPID",
+    "amount": {
+        "currency": "$payeeCurrency",
+        "amount": "$targetAmount"
+    },
+    "ilpPacket": "<Encoded transaction object>",
+    "condition": "$condition",
+    "expiration": "2016-05-24T08:38:08.699-04:00"
+}
+end note
+!endif
+activate S1
+!if ($simplified != true)
+S1-->D1:202 I'll get back to you
+!endif
+deactivate D1
+!if ($hideSwitchDetail != true)
+S1->S1:Is there a dependent transfer? Yes
+!endif
+S1->S1:Perform liquidity check and reserve funds\nagainst creditor party to dependent transfer
+note over S1
+Reservations:
+
+$payerFSPID has a reservation of $fxpSourceAmount $payerCurrency
+**$fxpID has a reservation of $targetAmount $payeeCurrency**
+end note
+
+S1->D2:Please do the transfer\n**POST /transfers**
+activate D2
+!if ($simplified != true)
+D2-->S1:202 I'll get back to you
+!endif
+deactivate S1
+D2->D2:Let me check that the terms of the dependent transfer\nare the same as the ones I agreed to\nand that the fulfilment and condition match
+
+D2->A2: Hi $receiverName's, you got inbound transfer $payeeReceiveAmount $payeeCurrency
+deactivate D2
+
+alt transfer failed
+  D2->>S1:Transfer is rejected
+  note over D2
+  **PUT /transfers/$commitRequestId**/error
+  {
+    "errorInformation": {
+      "errorCode": "5100",
+      "errorDescription": "error message"
+    }
+  }
+  ( **or** )
+  {
+    "transferState": "ABORETED"
+  }
+  end note
+
+  activate S1
+  !if ($simplified != true)
+  S1-->>D2:200 Gotcha
+  !endif
+  
+  S1->S1: Revert the position changes involved in this transfer
+  S1->S1: If there are dependency fxTransfers, abort the fxTransfers as well and revert the position changes involved in those fxTransfers
+
+  S1->>FXP: The linked transfer is failed.\nRemove any reservations or obligations
+  note over S1
+  **PATCH /fxTransfers/$commitRequestId**
+  {
+      "completedTimestamp": "2021-08-25T14:17:08.227+01:00",
+      "transferState": "ABORTED"
+  }
+  end note
+  activate FXP
+  FXP->FXP: Oops!
+  FXP-->>S1:200 Gotcha
+  deactivate FXP
+  S1->>D1:Transfer is complete\n**PUT /transfers/$commitRequestId/error**
+  activate D1
+  !if ($simplified != true)
+  D1-->S1:200 Gotcha
+  !endif
+  deactivate S1
+  D1->A1:Your transfer is failed
+  deactivate D1
+else transfer success
+  D2->>S1:Transfer is confirmed, here's the fulfilment
+  note over D2
+  **PUT /transfers/$commitRequestId**
+  {
+      "completedTimestamp": "2021-08-25T14:17:08.227+01:00",
+      "fulfilment": "mhPUT9ZAwd-BXLfeSd7-YPh46rBWRNBiTCSWjpku90s",
+      "transferState": "COMMITTED"
+  }
+  end note
+  activate S1
+  !if ($simplified != true)
+  S1-->>D2:200 Gotcha
+  !endif
+  
+  !if ($hideSwitchDetail != true)
+  S1->S1:Is there a dependent transfer?\nYes, there is.
+  S1->S1:Is this dependency against the debtor party to the transfer?\nYes, it is.
+  S1->S1:Create an obligation from the debtor party to the party named in the dependency (the FXP)
+  S1->S1:Is the transfer denominated in the currency of the payee receive amount?\nYes, it is.
+  S1->S1:Create an obligation from the party named in the dependency\nto the creditor party for the transfer
+  !else
+  S1->S1:Create obligations from the payer to the FXP and from FXP to the payee
+  !endif
+  S1->>FXP:The transfer succeeded.\nYou can clear it in your ledgers
+  note over S1
+  **PATCH /fxTransfers/$commitRequestId**
+  {
+      "completedTimestamp": "2021-08-25T14:17:08.227+01:00",
+      "fulfilment": "mhPUT9ZAwd-BXLfeSd7-YPh46rBWRNBiTCSWjpku90s",
+      "transferState": "COMMITTED"
+  }
+  end note
+  activate FXP
+  FXP->FXP:Let's just check: does this match the stuff I sent?
+  FXP->FXP:It does. Great. I'll clear the conversion
+  FXP-->>S1:200 Gotcha
+  deactivate FXP
+  note over S1
+      Ledger positions:
+      $payerFSPID has a debit of $fxpSourceAmount $payerCurrency
+      $fxpID has a credit of $fxpSourceAmount $payerCurrency
+      $fxpID has a debit of $fxpTargetAmount $payeeCurrency
+      $payeeFSPID has a credit of $targetAmount $payeeCurrency
+  end note
+  S1->>D1:Transfer is complete\n**PUT /transfers/$commitRequestId**
+  activate D1
+  !if ($simplified != true)
+  D1-->S1:200 Gotcha
+  !endif
+  deactivate S1
+
+  D1->A1:Your transfer is successful
+  deactivate D1
+end
+@enduml

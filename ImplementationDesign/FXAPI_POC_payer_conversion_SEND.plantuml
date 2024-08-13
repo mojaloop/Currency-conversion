@@ -3,7 +3,7 @@
 !$simplified = false
 !$shortCutSingleFXP = false
 !$hideSwitchDetail = false
-!$advancedCoreConnectorFlow = true
+!$advancedCoreConnectorFlow = false
 !$senderLastName = ""
 !$senderDOB = "1966-06-16"
 !$receiverName = "Yaro"
